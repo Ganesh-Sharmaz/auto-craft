@@ -29,7 +29,7 @@ export default function Hero() {
         position: 'relative',
         overflow: 'hidden',
       }}
-      className="max-sm:!px-6 max-sm:!pt-[120px] max-sm:!pb-[60px] bg-[#f5f5f0]"
+      className="max-sm:!px-6 max-sm:!pt-[120px] max-sm:!pb-[80px] max-sm:!justify-start max-sm:!min-h-0  max-sm:!h-fit bg-[#f5f5f0]"
       aria-label="Auto Craft — Best IT Services and AI Automation Company in India"
     >
       {/* Animated background watermark */}
