@@ -65,6 +65,7 @@ export default function Nav() {
         style={{ gap: '24px' }}
       >
         {[
+          { href: '/pricing', label: 'Pricing' },
           { href: '/services', label: 'Services' },
           { href: '/homepage#about', label: 'About' },
           { href: '/homepage#team', label: 'Team' },
