@@ -25,7 +25,7 @@ export default function Nav() {
       }
     };
 
-    if (pathname === path || pathname === '/homepage') {
+    if (pathname === path || pathname === '/home') {
       // Already on the right page — just scroll
       scrollToHash();
     } else {
@@ -45,7 +45,7 @@ export default function Nav() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
       <Link
-        href="/homepage"
+        href="/home"
         style={{
           fontFamily: 'var(--font-playfair)',
           fontWeight: 900,
@@ -67,8 +67,8 @@ export default function Nav() {
         {[
           { href: '/pricing', label: 'Pricing' },
           { href: '/services', label: 'Services' },
-          { href: '/homepage#about', label: 'About' },
-          { href: '/homepage#team', label: 'Team' },
+          { href: '/home#about', label: 'About' },
+          { href: '/home#team', label: 'Team' },
           { href: '/contact', label: 'Contact' },
         ].map((link) => (
           <li key={link.href}>
