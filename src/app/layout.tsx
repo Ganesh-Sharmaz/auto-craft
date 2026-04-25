@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Dharmendra Yadav' }, { name: 'Ganesh Sharma' }],
   robots:
     'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
-  alternates: { canonical: 'https://autocraft-phi.vercel.app/' },
+  alternates: { canonical: 'https://autocraft-phi.vercel.app/home' },
   openGraph: {
     type: 'website',
     url: 'https://autocraft-phi.vercel.app/',
