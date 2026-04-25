@@ -6,7 +6,7 @@ import { useContactModal } from './contact-modal';
 
 const INITIAL_DELAY = 10_000;
 const REPEAT_INTERVAL = 30_000;
-const NUDGE_VISIBLE_DURATION = 10_0000;
+const NUDGE_VISIBLE_DURATION = 10_000;
 const STORAGE_KEY = 'ac_modal_last_shown';
 const MIN_GAP = 15_000;
 
