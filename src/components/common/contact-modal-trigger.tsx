@@ -6,7 +6,7 @@ import { useContactModal } from './contact-modal';
 
 const INITIAL_DELAY = 10_000;
 const REPEAT_INTERVAL = 30_000;
-const NUDGE_VISIBLE_DURATION = 10_000;
+const NUDGE_VISIBLE_DURATION = 10_0000;
 const STORAGE_KEY = 'ac_modal_last_shown';
 const MIN_GAP = 15_000;
 
@@ -75,7 +75,7 @@ export default function ContactModalTrigger() {
             padding: '36px 36px 28px',
             boxShadow: '0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px #1f1f1f',
           }}
-          className="max-sm:!bottom-22  max-sm:!left-9 max-sm:!w-[300px]"
+          className="max-sm:!bottom-10  max-sm:!left-10 max-sm:!w-[330px]"
         >
           {/* Top accent line — bright white */}
           <motion.div
