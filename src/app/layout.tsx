@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     'geo.placename': 'Indrapuram, Ghaziabad, Uttar Pradesh, India',
     'geo.position': '28.6692;77.3663',
     ICBM: '28.6692, 77.3663',
-    'google-site-verification': 'zNrLwDZFkK_VYgF3_2LWqlB5kzkB2_kAbSNe3bhL8Io',
+    'google-site-verification': 'vEgABVsm4TQ0XVMHk44XQKc0UxIXzyMTesJdQwcqyFI',
   },
 };
 
