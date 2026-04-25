@@ -181,7 +181,7 @@ export default function RootLayout({
         <Cursor />
         {/* ContactModalProvider wraps everything so any child can call useContactModal() */}
         <ContactModalProvider>
-          <div className='w-screen overflow-clip'>
+          <div className="w-screen overflow-clip">
             {children}
             {/* Auto-triggers the modal nudge after 25s, then every 90s */}
           </div>
