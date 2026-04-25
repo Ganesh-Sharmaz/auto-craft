@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronDown, Check } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const SERVICES = [
   'SaaS Product Development',
@@ -146,14 +147,29 @@ export default function ContactForm() {
 
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const form = e.currentTarget;
+
     const name = (
       form.elements.namedItem('name') as HTMLInputElement
     ).value.trim();
+
     const email = (
       form.elements.namedItem('email') as HTMLInputElement
+    ).value.trim();
+
+    const company = (
+      form.elements.namedItem('company') as HTMLInputElement
+    ).value.trim();
+
+    const phone = (
+      form.elements.namedItem('phone') as HTMLInputElement
+    ).value.trim();
+
+    const brief = (
+      form.elements.namedItem('brief') as HTMLTextAreaElement
     ).value.trim();
 
     if (!name || !email) {
@@ -162,14 +178,47 @@ export default function ContactForm() {
       return;
     }
 
-    setSubmitted(true);
+    if (!service) {
+      setError('Select a service');
+      setTimeout(() => setError(''), 4000);
+      return;
+    }
 
-    // Reset back to form after 4 seconds
-    setTimeout(() => {
-      setSubmitted(false);
-      setService('');
-      formRef.current?.reset();
-    }, 4000);
+    try {
+      const serviceID = process.env.NEXT_PUBLIC_MAIL_SERVICE_ID!;
+      const templateID = process.env.NEXT_PUBLIC_TEMPLATE_ID!;
+      const publicKey = process.env.NEXT_PUBLIC_MAIL_PUBLIC_KEY!;
+
+      const templateParams = {
+        from_name: name,
+        from_email: 'ganesh.sharma.work@yopmail.com',
+        reply_to: email,
+        to_name: 'AutoCraft Team',
+
+        message: `
+Service: ${service}
+Company: ${company}
+Phone: ${phone}
+
+Project Brief:
+${brief}
+      `,
+      };
+
+      await emailjs.send(serviceID, templateID, templateParams, publicKey);
+
+      setSubmitted(true);
+
+      setTimeout(() => {
+        setSubmitted(false);
+        setService('');
+        formRef.current?.reset();
+      }, 4000);
+    } catch (err) {
+      console.error(err);
+      setError('Failed to send');
+      setTimeout(() => setError(''), 4000);
+    }
   };
 
   return (
@@ -368,6 +417,11 @@ export default function ContactForm() {
                 <div style={{ borderBottom: '1px solid #d0d0c8' }}>
                   <label style={labelStyle}>Service</label>
                   <ServiceDropdown value={service} onChange={setService} />
+                  <input
+                    type="hidden"
+                    name="selected_service"
+                    value={service}
+                  />
                 </div>
 
                 {/* Brief */}

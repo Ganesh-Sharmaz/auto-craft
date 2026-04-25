@@ -1,7 +1,7 @@
 'use client';
 
-import Link from 'next/link';
 import { easeInOut, motion } from 'framer-motion';
+import { useContactModal } from '@/components/common/contact-modal';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -17,6 +17,8 @@ const fadeUp = {
 };
 
 export default function Hero() {
+  const { open } = useContactModal();
+
   return (
     <section
       style={{
@@ -29,7 +31,7 @@ export default function Hero() {
         position: 'relative',
         overflow: 'hidden',
       }}
-      className="max-sm:!px-6 max-sm:!pt-[120px] max-sm:!pb-[80px] max-sm:!justify-start max-sm:!min-h-0  max-sm:!h-fit bg-[#f5f5f0]"
+      className="max-sm:!px-6 max-sm:!pt-[120px] max-sm:!pb-[80px] max-sm:!justify-start max-sm:!min-h-0 max-sm:!h-fit bg-[#f5f5f0]"
       aria-label="Auto Craft — Best IT Services and AI Automation Company in India"
     >
       {/* Animated background watermark */}
@@ -131,8 +133,13 @@ export default function Hero() {
           <br />
           Software that scales.
         </p>
-        <Link
-          href="/contact"
+
+        {/* 
+          Changed from <Link href="/contact"> to a <button> that opens the modal.
+          Visually identical to the original button.
+        */}
+        <button
+          onClick={open}
           style={{
             display: 'inline-block',
             background: '#0a0a0a',
@@ -144,21 +151,22 @@ export default function Hero() {
             textDecoration: 'none',
             padding: '18px 40px',
             border: '1px solid #0a0a0a',
+            cursor: 'pointer',
             transition: 'background 0.2s, color 0.2s',
           }}
           onMouseEnter={(e) => {
-            const el = e.currentTarget as HTMLAnchorElement;
+            const el = e.currentTarget as HTMLButtonElement;
             el.style.background = '#f5f5f0';
             el.style.color = '#0a0a0a';
           }}
           onMouseLeave={(e) => {
-            const el = e.currentTarget as HTMLAnchorElement;
+            const el = e.currentTarget as HTMLButtonElement;
             el.style.background = '#0a0a0a';
             el.style.color = '#f5f5f0';
           }}
         >
           Start a Project
-        </Link>
+        </button>
       </motion.div>
     </section>
   );

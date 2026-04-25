@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { Playfair_Display, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Cursor from '@/components/cursor/cursor';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/next';
+import { ContactModalProvider } from '@/components/common/contact-modal';
+import ContactModalTrigger from '@/components/common/contact-modal-trigger';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -177,7 +179,12 @@ export default function RootLayout({
       <body className={`${playfair.variable} ${geistMono.variable} font-geist`}>
         <Analytics />
         <Cursor />
-        {children}
+        {/* ContactModalProvider wraps everything so any child can call useContactModal() */}
+        <ContactModalProvider>
+          {children}
+          {/* Auto-triggers the modal nudge after 25s, then every 90s */}
+          <ContactModalTrigger />
+        </ContactModalProvider>
       </body>
     </html>
   );
