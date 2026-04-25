@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Playfair_Display, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Cursor from '@/components/cursor/cursor';
+import { Analytics } from "@vercel/analytics/next"
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -174,6 +175,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${playfair.variable} ${geistMono.variable} font-geist`}>
+        <Analytics />
         <Cursor />
         {children}
       </body>
