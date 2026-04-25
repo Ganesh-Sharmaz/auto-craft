@@ -75,7 +75,7 @@ export default function ContactModalTrigger() {
             padding: '36px 36px 28px',
             boxShadow: '0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px #1f1f1f',
           }}
-          className="max-sm:!bottom-4 max-sm:!right-4 max-sm:!left-4 max-sm:!w-auto"
+          className="max-sm:!bottom-22  max-sm:!left-9 max-sm:!w-[300px]"
         >
           {/* Top accent line — bright white */}
           <motion.div

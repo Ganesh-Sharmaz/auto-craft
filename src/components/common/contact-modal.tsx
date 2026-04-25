@@ -58,14 +58,42 @@ const inputStyle: React.CSSProperties = {
   width: '100%',
 };
 
+// ─── Mobile scroll helper ────────────────────────────────────────────────────
+// Scrolls targetRef into view inside the modal panel.
+// Only fires on mobile (max-width: 639px) — desktop is untouched.
+
+function scrollToRef(
+  targetRef: React.RefObject<HTMLElement | null>,
+  panelRef: React.RefObject<HTMLElement | null>,
+) {
+  if (typeof window === 'undefined') return;
+  if (!window.matchMedia('(max-width: 639px)').matches) return;
+
+  const target = targetRef.current;
+  const panel = panelRef.current;
+  if (!target || !panel) return;
+
+  // 120 ms delay so the soft keyboard has time to appear and resize the viewport
+  setTimeout(() => {
+    const panelRect = panel.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+    const offset = targetRect.top - panelRect.top - 16; // 16 px breathing room above target
+    panel.scrollBy({ top: offset, behavior: 'smooth' });
+  }, 120);
+}
+
 // ─── Service Dropdown ────────────────────────────────────────────────────────
 
 function ServiceDropdown({
   value,
   onChange,
+  panelRef,
+  submitRef,
 }: {
   value: string;
   onChange: (val: string) => void;
+  panelRef: React.RefObject<HTMLElement | null>;
+  submitRef: React.RefObject<HTMLElement | null>;
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -78,6 +106,13 @@ function ServiceDropdown({
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
   }, []);
+
+  const handleSelect = (service: string) => {
+    onChange(service);
+    setOpen(false);
+    // After selecting a service scroll the brief/submit row into view
+    scrollToRef(submitRef, panelRef);
+  };
 
   return (
     <div ref={ref} style={{ position: 'relative' }}>
@@ -121,8 +156,8 @@ function ServiceDropdown({
             style={{
               position: 'absolute',
               top: 'calc(100% - 8px)',
-              left: '-24px',
-              right: '-24px',
+              left: 0,
+              right: 0,
               background: '#0a0a0a',
               zIndex: 100,
               borderTop: '1px solid #1a1a1a',
@@ -132,10 +167,7 @@ function ServiceDropdown({
               <button
                 key={service}
                 type="button"
-                onClick={() => {
-                  onChange(service);
-                  setOpen(false);
-                }}
+                onClick={() => handleSelect(service)}
                 style={{
                   width: '100%',
                   display: 'flex',
@@ -151,7 +183,7 @@ function ServiceDropdown({
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
                   color: value === service ? '#f5f5f0' : '#555',
-                  padding: '16px 24px',
+                  padding: '16px 18px',
                   textAlign: 'left',
                   transition: 'color 0.15s',
                 }}
@@ -183,11 +215,23 @@ function ServiceDropdown({
 
 // ─── Modal Inner Form ─────────────────────────────────────────────────────────
 
-function ModalForm({ onClose }: { onClose: () => void }) {
+function ModalForm({
+  onClose,
+  panelRef,
+}: {
+  onClose: () => void;
+  panelRef: React.RefObject<HTMLElement | null>;
+}) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
   const [service, setService] = useState('');
   const formRef = useRef<HTMLFormElement>(null);
+
+  // Scroll target refs — one per logical row
+  const emailRowRef = useRef<HTMLDivElement>(null);
+  const serviceRowRef = useRef<HTMLDivElement>(null);
+  const briefRowRef = useRef<HTMLDivElement>(null);
+  const submitRowRef = useRef<HTMLDivElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -263,13 +307,13 @@ function ModalForm({ onClose }: { onClose: () => void }) {
           exit={{ opacity: 0, y: -16 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           style={{
-            padding: '64px 52px',
             display: 'flex',
             flexDirection: 'column',
             gap: '20px',
             minHeight: '320px',
             justifyContent: 'center',
           }}
+          className="px-5 py-16 sm:px-[52px]"
         >
           <div
             style={{
@@ -321,19 +365,10 @@ function ModalForm({ onClose }: { onClose: () => void }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          style={{ padding: '0 52px 40px' }}
-          className="max-sm:!px-6"
+          className="px-5 pb-8 sm:px-[52px] sm:pb-10"
         >
-          {/* Name + Company */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '0 40px',
-              borderBottom: '1px solid #d0d0c8',
-            }}
-            className="max-sm:!grid-cols-1 max-sm:!gap-0"
-          >
+          {/* ── Row 1: Name + Company ── */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-10 border-b border-[#d0d0c8]">
             <div>
               <label style={labelStyle}>Name</label>
               <input
@@ -343,26 +378,25 @@ function ModalForm({ onClose }: { onClose: () => void }) {
                 style={inputStyle}
               />
             </div>
-            <div>
+            <div className="border-t border-[#d0d0c8] sm:border-t-0">
               <label style={labelStyle}>Company</label>
               <input
                 name="company"
                 type="text"
                 placeholder="Startup / firm"
                 style={inputStyle}
+                onBlur={(e) => {
+                  // Scroll email row into view only when company is filled
+                  if (e.target.value.trim()) scrollToRef(emailRowRef, panelRef);
+                }}
               />
             </div>
           </div>
 
-          {/* Email + Phone */}
+          {/* ── Row 2: Email + Phone ── */}
           <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '0 40px',
-              borderBottom: '1px solid #d0d0c8',
-            }}
-            className="max-sm:!grid-cols-1 max-sm:!gap-0"
+            ref={emailRowRef}
+            className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-10 border-b border-[#d0d0c8]"
           >
             <div>
               <label style={labelStyle}>Email</label>
@@ -371,28 +405,43 @@ function ModalForm({ onClose }: { onClose: () => void }) {
                 type="email"
                 placeholder="you@company.com"
                 style={inputStyle}
+                onBlur={(e) => {
+                  if (e.target.value.trim())
+                    scrollToRef(serviceRowRef, panelRef);
+                }}
               />
             </div>
-            <div>
+            <div className="border-t border-[#d0d0c8] sm:border-t-0">
               <label style={labelStyle}>Phone</label>
               <input
                 name="phone"
                 type="tel"
                 placeholder="+91 XXXXX XXXXX"
                 style={inputStyle}
+                onBlur={() => {
+                  scrollToRef(serviceRowRef, panelRef);
+                }}
               />
             </div>
           </div>
 
-          {/* Service */}
-          <div style={{ borderBottom: '1px solid #d0d0c8' }}>
+          {/* ── Row 3: Service ── */}
+          <div
+            ref={serviceRowRef}
+            style={{ borderBottom: '1px solid #d0d0c8' }}
+          >
             <label style={labelStyle}>Service</label>
-            <ServiceDropdown value={service} onChange={setService} />
+            <ServiceDropdown
+              value={service}
+              onChange={setService}
+              panelRef={panelRef}
+              submitRef={briefRowRef}
+            />
             <input type="hidden" name="selected_service" value={service} />
           </div>
 
-          {/* Brief */}
-          <div>
+          {/* ── Row 4: Brief ── */}
+          <div ref={briefRowRef}>
             <label style={labelStyle}>Brief</label>
             <textarea
               name="brief"
@@ -404,19 +453,18 @@ function ModalForm({ onClose }: { onClose: () => void }) {
                 lineHeight: 1.9,
                 paddingBottom: '16px',
               }}
+              onFocus={() => {
+                // When brief gets focus scroll the submit button into view
+                scrollToRef(submitRowRef, panelRef);
+              }}
             />
           </div>
 
-          {/* Submit */}
+          {/* ── Submit ── */}
           <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              paddingTop: '28px',
-              borderTop: '1px solid #d0d0c8',
-            }}
-            className="max-sm:!flex-col max-sm:!items-start max-sm:!gap-5"
+            ref={submitRowRef}
+            style={{ paddingTop: '28px', borderTop: '1px solid #d0d0c8' }}
+            className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
           >
             <span
               style={{
@@ -432,7 +480,7 @@ function ModalForm({ onClose }: { onClose: () => void }) {
 
             <button
               type="submit"
-              className="inline-flex items-center gap-2"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2"
               style={{
                 background: error ? '#c0392b' : '#0a0a0a',
                 color: '#f5f5f0',
@@ -464,7 +512,6 @@ function ModalForm({ onClose }: { onClose: () => void }) {
                 error
               ) : (
                 <>
-                  {' '}
                   Send Message <ArrowRight size={12} />
                 </>
               )}
@@ -481,11 +528,13 @@ function ModalForm({ onClose }: { onClose: () => void }) {
 function ContactModal({
   isOpen,
   onClose,
-}: {
+}: Readonly<{
   isOpen: boolean;
   onClose: () => void;
-}) {
-  // Lock body scroll when modal is open
+}>) {
+  // panelRef is forwarded to ModalForm so it can scroll inside the panel element
+  const panelRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -497,7 +546,6 @@ function ContactModal({
     };
   }, [isOpen]);
 
-  // Close on Escape
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -509,7 +557,6 @@ function ContactModal({
   return (
     <AnimatePresence>
       {isOpen && (
-        /* Single container: backdrop + flex centering */
         <motion.div
           key="backdrop"
           initial={{ opacity: 0 }}
@@ -524,33 +571,32 @@ function ContactModal({
             zIndex: 9998,
             backdropFilter: 'blur(4px)',
             WebkitBackdropFilter: 'blur(4px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '24px',
+            touchAction: 'none',
           }}
+          className="flex items-end sm:items-center justify-center sm:p-6"
         >
-          {/* Panel — stop click propagation so clicking inside doesn't close */}
+          {/* Panel */}
           <motion.div
             key="panel"
-            initial={{ opacity: 0, y: 48, scale: 0.97 }}
+            ref={panelRef}
+            initial={{ opacity: 0, y: 48, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 32, scale: 0.97 }}
+            exit={{ opacity: 0, y: 32, scale: 0.98 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             onClick={(e) => e.stopPropagation()}
             style={{
               width: 'min(720px, 100%)',
-              maxHeight: '90vh',
+              maxHeight: '92vh',
               background: '#f5f5f0',
               zIndex: 9999,
               overflowY: 'auto',
               scrollbarWidth: 'none',
             }}
+            className="rounded-t-xl sm:rounded-none"
           >
             {/* Header */}
             <div
               style={{
-                padding: '40px 52px 32px',
                 borderBottom: '1px solid #d0d0c8',
                 display: 'flex',
                 alignItems: 'flex-end',
@@ -560,7 +606,7 @@ function ContactModal({
                 background: '#f5f5f0',
                 zIndex: 10,
               }}
-              className="max-sm:!px-6 max-sm:!pt-8 max-sm:!pb-6"
+              className="px-5 pt-7 pb-5 sm:px-[52px] sm:pt-10 sm:pb-8"
             >
               <div>
                 <div
@@ -594,7 +640,6 @@ function ContactModal({
                 </h2>
               </div>
 
-              {/* Close button */}
               <button
                 onClick={onClose}
                 style={{
@@ -608,7 +653,7 @@ function ContactModal({
                   color: '#aaaaaa',
                   transition: 'all 0.2s',
                   flexShrink: 0,
-                  marginLeft: '24px',
+                  marginLeft: '16px',
                   marginBottom: '4px',
                 }}
                 onMouseEnter={(e) => {
@@ -631,7 +676,7 @@ function ContactModal({
 
             {/* Form body */}
             <div style={{ paddingTop: '32px' }}>
-              <ModalForm onClose={onClose} />
+              <ModalForm onClose={onClose} panelRef={panelRef} />
             </div>
           </motion.div>
         </motion.div>
@@ -644,9 +689,9 @@ function ContactModal({
 
 export function ContactModalProvider({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   const [isOpen, setIsOpen] = useState(false);
 
   const open = () => setIsOpen(true);
