@@ -189,8 +189,8 @@ export default function PricingPage() {
       />
 
       <PricingHero />
-      <PricingOverview />
       <PricingSection />
+      <PricingOverview />
       <PricingProcess />
       <PricingFAQ />
       <ServiceContactCTA />
