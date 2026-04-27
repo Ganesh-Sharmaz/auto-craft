@@ -14,12 +14,13 @@ export default function Footer() {
       style={{
         background: '#0a0a0a',
         color: '#f5f5f0',
-        padding: '60px 60px 40px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
       }}
-      className="max-sm:flex-col max-sm:items-start max-sm:gap-10 max-sm:!px-6 max-sm:!pt-12 max-sm:!pb-8"
+      className="
+        flex justify-between items-end
+        px-[60px] pt-[60px] pb-[40px]
+        max-sm:flex-col max-sm:items-start max-sm:gap-10
+        max-sm:px-6 max-sm:pt-12 max-sm:pb-8
+      "
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -53,8 +54,12 @@ export default function Footer() {
         >
           We build what moves. — Indrapuram, Ghaziabad.
         </div>
-        <nav style={{ display: 'flex', gap: '32px', marginTop: '20px' }}>
+        <nav
+          className="flex flex-wrap"
+          style={{ gap: '24px 32px', marginTop: '20px' }}
+        >
           {[
+            { href: '/pricing', label: 'Pricing' },
             { href: '/services', label: 'Services' },
             { href: '/#about', label: 'About' },
             { href: '/#team', label: 'Team' },
@@ -82,13 +87,14 @@ export default function Footer() {
       </motion.div>
 
       <motion.div
-        className="max-sm:text-left"
+        className="max-sm:text-left max-sm:w-full"
         style={{ textAlign: 'right' }}
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.15 }}
       >
         <div
+          className="max-sm:tracking-[0.05em] max-sm:!text-[0.65rem]"
           style={{
             fontFamily: 'var(--font-geist-mono)',
             fontSize: '0.5rem',
