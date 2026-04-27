@@ -191,7 +191,7 @@ export default function ContactForm() {
 
       const templateParams = {
         from_name: name,
-        from_email: 'ganesh.sharma.work@yopmail.com',
+        from_email: 'ganesh.sharma.work@gmail.com',
         reply_to: email,
         to_name: 'AutoCraft Team',
 

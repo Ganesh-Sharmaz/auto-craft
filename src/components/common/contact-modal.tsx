@@ -274,7 +274,7 @@ function ModalForm({
         templateID,
         {
           from_name: name,
-          from_email: 'ganesh.sharma.work@yopmail.com',
+          from_email: 'ganesh.sharma.work@gmail.com',
           reply_to: email,
           to_name: 'AutoCraft Team',
           message: `Service: ${service}\nCompany: ${company}\nPhone: ${phone}\n\nProject Brief:\n${brief}`,
