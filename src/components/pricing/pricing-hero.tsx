@@ -110,11 +110,11 @@ export default function PricingHero() {
           zIndex: 10,
         }}
       >
+        SaaS, AI automation, and web builds.
+        <br />
         Three tiers. Clear scope.
         <br />
-        No hidden costs.
-        <br />
-        Every number here is a
+        No hidden costs. Every number is a
         <br />
         starting point — not a wall.
       </motion.p>

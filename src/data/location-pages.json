@@ -1,0 +1,406 @@
+[
+  {
+    "state": "Uttar Pradesh",
+    "stateSlug": "uttar-pradesh",
+    "city": "Ghaziabad",
+    "citySlug": "ghaziabad",
+    "market": "Delhi NCR access, manufacturing, education, healthcare, and growing small businesses",
+    "industries": ["manufacturing", "education", "healthcare"]
+  },
+  {
+    "state": "Uttar Pradesh",
+    "stateSlug": "uttar-pradesh",
+    "city": "Noida",
+    "citySlug": "noida",
+    "market": "technology companies, startups, media, real estate, and growing digital businesses",
+    "industries": ["technology", "media", "real estate"]
+  },
+  {
+    "state": "Uttar Pradesh",
+    "stateSlug": "uttar-pradesh",
+    "city": "Lucknow",
+    "citySlug": "lucknow",
+    "market": "public-sector technology, healthcare, education, retail, and service businesses",
+    "industries": ["healthcare", "education", "retail"]
+  },
+  {
+    "state": "Uttar Pradesh",
+    "stateSlug": "uttar-pradesh",
+    "city": "Kanpur",
+    "citySlug": "kanpur",
+    "market": "manufacturing, education, healthcare, logistics, and traditional businesses going digital",
+    "industries": ["manufacturing", "logistics", "education"]
+  },
+  {
+    "state": "Uttar Pradesh",
+    "stateSlug": "uttar-pradesh",
+    "city": "Agra",
+    "citySlug": "agra",
+    "market": "tourism, hospitality, retail, manufacturing, and local service businesses",
+    "industries": ["tourism", "hospitality", "retail"]
+  },
+  {
+    "state": "Uttar Pradesh",
+    "stateSlug": "uttar-pradesh",
+    "city": "Varanasi",
+    "citySlug": "varanasi",
+    "market": "tourism, education, healthcare, retail, and cultural businesses",
+    "industries": ["tourism", "education", "retail"]
+  },
+  {
+    "state": "Uttar Pradesh",
+    "stateSlug": "uttar-pradesh",
+    "city": "Prayagraj",
+    "citySlug": "prayagraj",
+    "market": "education, public services, healthcare, retail, and professional services",
+    "industries": ["education", "healthcare", "professional services"]
+  },
+  {
+    "state": "Uttar Pradesh",
+    "stateSlug": "uttar-pradesh",
+    "city": "Meerut",
+    "citySlug": "meerut",
+    "market": "manufacturing, sports goods, education, healthcare, and local commerce",
+    "industries": ["manufacturing", "education", "retail"]
+  },
+  {
+    "state": "Uttar Pradesh",
+    "stateSlug": "uttar-pradesh",
+    "city": "Bareilly",
+    "citySlug": "bareilly",
+    "market": "healthcare, education, retail, manufacturing, and regional businesses",
+    "industries": ["healthcare", "education", "manufacturing"]
+  },
+  {
+    "state": "Uttar Pradesh",
+    "stateSlug": "uttar-pradesh",
+    "city": "Gorakhpur",
+    "citySlug": "gorakhpur",
+    "market": "healthcare, education, logistics, retail, and emerging startups",
+    "industries": ["healthcare", "education", "logistics"]
+  },
+
+  {
+    "state": "Maharashtra",
+    "stateSlug": "maharashtra",
+    "city": "Mumbai",
+    "citySlug": "mumbai",
+    "market": "finance, media, fintech, professional services, and high-growth businesses",
+    "industries": ["finance", "media", "fintech"]
+  },
+  {
+    "state": "Maharashtra",
+    "stateSlug": "maharashtra",
+    "city": "Pune",
+    "citySlug": "pune",
+    "market": "software, education, manufacturing, mobility, and startup businesses",
+    "industries": ["software", "education", "manufacturing"]
+  },
+  {
+    "state": "Maharashtra",
+    "stateSlug": "maharashtra",
+    "city": "Nagpur",
+    "citySlug": "nagpur",
+    "market": "logistics, public services, healthcare, education, and growing enterprises",
+    "industries": ["logistics", "healthcare", "education"]
+  },
+  {
+    "state": "Maharashtra",
+    "stateSlug": "maharashtra",
+    "city": "Nashik",
+    "citySlug": "nashik",
+    "market": "manufacturing, agriculture, food, tourism, and regional commerce",
+    "industries": ["manufacturing", "agriculture", "food"]
+  },
+  {
+    "state": "Maharashtra",
+    "stateSlug": "maharashtra",
+    "city": "Thane",
+    "citySlug": "thane",
+    "market": "real estate, finance, healthcare, retail, and professional services",
+    "industries": ["real estate", "finance", "healthcare"]
+  },
+  {
+    "state": "Maharashtra",
+    "stateSlug": "maharashtra",
+    "city": "Navi Mumbai",
+    "citySlug": "navi-mumbai",
+    "market": "logistics, finance, technology, healthcare, and planned commercial development",
+    "industries": ["logistics", "finance", "technology"]
+  },
+  {
+    "state": "Maharashtra",
+    "stateSlug": "maharashtra",
+    "city": "Chhatrapati Sambhajinagar",
+    "citySlug": "chhatrapati-sambhajinagar",
+    "market": "manufacturing, automotive, tourism, education, and regional enterprises",
+    "industries": ["manufacturing", "automotive", "tourism"]
+  },
+  {
+    "state": "Maharashtra",
+    "stateSlug": "maharashtra",
+    "city": "Kolhapur",
+    "citySlug": "kolhapur",
+    "market": "engineering, manufacturing, education, healthcare, and local businesses",
+    "industries": ["engineering", "manufacturing", "education"]
+  },
+  {
+    "state": "Maharashtra",
+    "stateSlug": "maharashtra",
+    "city": "Solapur",
+    "citySlug": "solapur",
+    "market": "textiles, manufacturing, education, healthcare, and regional commerce",
+    "industries": ["textiles", "manufacturing", "healthcare"]
+  },
+  {
+    "state": "Maharashtra",
+    "stateSlug": "maharashtra",
+    "city": "Amravati",
+    "citySlug": "amravati",
+    "market": "education, agriculture, healthcare, retail, and emerging businesses",
+    "industries": ["education", "agriculture", "healthcare"]
+  },
+
+  {
+    "state": "Karnataka",
+    "stateSlug": "karnataka",
+    "city": "Bengaluru",
+    "citySlug": "bengaluru",
+    "market": "startups, SaaS, engineering, fintech, healthcare, and technology companies",
+    "industries": ["startups", "SaaS", "fintech"]
+  },
+  {
+    "state": "Karnataka",
+    "stateSlug": "karnataka",
+    "city": "Mysuru",
+    "citySlug": "mysuru",
+    "market": "technology, education, tourism, healthcare, and emerging businesses",
+    "industries": ["technology", "education", "tourism"]
+  },
+  {
+    "state": "Karnataka",
+    "stateSlug": "karnataka",
+    "city": "Mangaluru",
+    "citySlug": "mangaluru",
+    "market": "healthcare, education, logistics, finance, and coastal commerce",
+    "industries": ["healthcare", "education", "logistics"]
+  },
+  {
+    "state": "Karnataka",
+    "stateSlug": "karnataka",
+    "city": "Hubballi",
+    "citySlug": "hubballi",
+    "market": "logistics, finance, education, manufacturing, and regional enterprises",
+    "industries": ["logistics", "finance", "manufacturing"]
+  },
+  {
+    "state": "Karnataka",
+    "stateSlug": "karnataka",
+    "city": "Belagavi",
+    "citySlug": "belagavi",
+    "market": "manufacturing, engineering, education, healthcare, and local commerce",
+    "industries": ["manufacturing", "engineering", "education"]
+  },
+  {
+    "state": "Karnataka",
+    "stateSlug": "karnataka",
+    "city": "Shivamogga",
+    "citySlug": "shivamogga",
+    "market": "education, healthcare, agriculture, tourism, and regional businesses",
+    "industries": ["education", "healthcare", "agriculture"]
+  },
+  {
+    "state": "Karnataka",
+    "stateSlug": "karnataka",
+    "city": "Tumakuru",
+    "citySlug": "tumakuru",
+    "market": "manufacturing, engineering, logistics, education, and technology suppliers",
+    "industries": ["manufacturing", "engineering", "logistics"]
+  },
+  {
+    "state": "Karnataka",
+    "stateSlug": "karnataka",
+    "city": "Davanagere",
+    "citySlug": "davanagere",
+    "market": "education, healthcare, food, agriculture, and regional commerce",
+    "industries": ["education", "healthcare", "food"]
+  },
+  {
+    "state": "Karnataka",
+    "stateSlug": "karnataka",
+    "city": "Kalaburagi",
+    "citySlug": "kalaburagi",
+    "market": "education, healthcare, agriculture, public services, and local businesses",
+    "industries": ["education", "healthcare", "agriculture"]
+  },
+  {
+    "state": "Karnataka",
+    "stateSlug": "karnataka",
+    "city": "Udupi",
+    "citySlug": "udupi",
+    "market": "education, healthcare, tourism, hospitality, and local commerce",
+    "industries": ["education", "healthcare", "tourism"]
+  },
+
+  {
+    "state": "Telangana",
+    "stateSlug": "telangana",
+    "city": "Hyderabad",
+    "citySlug": "hyderabad",
+    "market": "technology, healthcare, life sciences, fintech, and enterprise services",
+    "industries": ["technology", "healthcare", "fintech"]
+  },
+  {
+    "state": "Telangana",
+    "stateSlug": "telangana",
+    "city": "Warangal",
+    "citySlug": "warangal",
+    "market": "education, healthcare, public services, agriculture, and regional businesses",
+    "industries": ["education", "healthcare", "agriculture"]
+  },
+  {
+    "state": "Telangana",
+    "stateSlug": "telangana",
+    "city": "Nizamabad",
+    "citySlug": "nizamabad",
+    "market": "agriculture, food, healthcare, education, and local commerce",
+    "industries": ["agriculture", "food", "healthcare"]
+  },
+  {
+    "state": "Telangana",
+    "stateSlug": "telangana",
+    "city": "Karimnagar",
+    "citySlug": "karimnagar",
+    "market": "education, healthcare, agriculture, retail, and regional enterprises",
+    "industries": ["education", "healthcare", "agriculture"]
+  },
+  {
+    "state": "Telangana",
+    "stateSlug": "telangana",
+    "city": "Khammam",
+    "citySlug": "khammam",
+    "market": "agriculture, logistics, education, healthcare, and local businesses",
+    "industries": ["agriculture", "logistics", "education"]
+  },
+  {
+    "state": "Telangana",
+    "stateSlug": "telangana",
+    "city": "Ramagundam",
+    "citySlug": "ramagundam",
+    "market": "energy, manufacturing, logistics, education, and industrial suppliers",
+    "industries": ["energy", "manufacturing", "logistics"]
+  },
+  {
+    "state": "Telangana",
+    "stateSlug": "telangana",
+    "city": "Mahbubnagar",
+    "citySlug": "mahbubnagar",
+    "market": "agriculture, education, healthcare, construction, and regional commerce",
+    "industries": ["agriculture", "education", "healthcare"]
+  },
+  {
+    "state": "Telangana",
+    "stateSlug": "telangana",
+    "city": "Nalgonda",
+    "citySlug": "nalgonda",
+    "market": "agriculture, healthcare, education, food, and local businesses",
+    "industries": ["agriculture", "healthcare", "food"]
+  },
+  {
+    "state": "Telangana",
+    "stateSlug": "telangana",
+    "city": "Adilabad",
+    "citySlug": "adilabad",
+    "market": "agriculture, forestry, healthcare, education, and regional services",
+    "industries": ["agriculture", "healthcare", "education"]
+  },
+  {
+    "state": "Telangana",
+    "stateSlug": "telangana",
+    "city": "Suryapet",
+    "citySlug": "suryapet",
+    "market": "logistics, agriculture, education, healthcare, and local commerce",
+    "industries": ["logistics", "agriculture", "education"]
+  },
+
+  {
+    "state": "Tamil Nadu",
+    "stateSlug": "tamil-nadu",
+    "city": "Chennai",
+    "citySlug": "chennai",
+    "market": "software, automotive, healthcare, manufacturing, fintech, and enterprise services",
+    "industries": ["software", "automotive", "healthcare"]
+  },
+  {
+    "state": "Tamil Nadu",
+    "stateSlug": "tamil-nadu",
+    "city": "Coimbatore",
+    "citySlug": "coimbatore",
+    "market": "engineering, manufacturing, education, healthcare, and textile businesses",
+    "industries": ["engineering", "manufacturing", "textiles"]
+  },
+  {
+    "state": "Tamil Nadu",
+    "stateSlug": "tamil-nadu",
+    "city": "Madurai",
+    "citySlug": "madurai",
+    "market": "healthcare, education, tourism, retail, and regional services",
+    "industries": ["healthcare", "education", "tourism"]
+  },
+  {
+    "state": "Tamil Nadu",
+    "stateSlug": "tamil-nadu",
+    "city": "Tiruchirappalli",
+    "citySlug": "tiruchirappalli",
+    "market": "education, engineering, manufacturing, healthcare, and public services",
+    "industries": ["education", "engineering", "manufacturing"]
+  },
+  {
+    "state": "Tamil Nadu",
+    "stateSlug": "tamil-nadu",
+    "city": "Salem",
+    "citySlug": "salem",
+    "market": "manufacturing, steel, healthcare, education, and regional commerce",
+    "industries": ["manufacturing", "healthcare", "education"]
+  },
+  {
+    "state": "Tamil Nadu",
+    "stateSlug": "tamil-nadu",
+    "city": "Tiruppur",
+    "citySlug": "tiruppur",
+    "market": "textiles, manufacturing, logistics, e-commerce, and export businesses",
+    "industries": ["textiles", "manufacturing", "logistics"]
+  },
+  {
+    "state": "Tamil Nadu",
+    "stateSlug": "tamil-nadu",
+    "city": "Erode",
+    "citySlug": "erode",
+    "market": "textiles, agriculture, food, healthcare, and regional commerce",
+    "industries": ["textiles", "agriculture", "food"]
+  },
+  {
+    "state": "Tamil Nadu",
+    "stateSlug": "tamil-nadu",
+    "city": "Vellore",
+    "citySlug": "vellore",
+    "market": "healthcare, education, manufacturing, retail, and professional services",
+    "industries": ["healthcare", "education", "manufacturing"]
+  },
+  {
+    "state": "Tamil Nadu",
+    "stateSlug": "tamil-nadu",
+    "city": "Thoothukudi",
+    "citySlug": "thoothukudi",
+    "market": "ports, logistics, manufacturing, energy, and regional commerce",
+    "industries": ["logistics", "manufacturing", "energy"]
+  },
+  {
+    "state": "Tamil Nadu",
+    "stateSlug": "tamil-nadu",
+    "city": "Tirunelveli",
+    "citySlug": "tirunelveli",
+    "market": "education, healthcare, agriculture, energy, and local businesses",
+    "industries": ["education", "healthcare", "agriculture"]
+  }
+]

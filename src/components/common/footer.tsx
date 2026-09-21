@@ -58,7 +58,8 @@ export default function Footer() {
           className="flex flex-wrap"
           style={{ gap: '24px 32px', marginTop: '20px' }}
         >
-          {[
+            {[
+            { href: '/locations', label: 'Locations' },
             { href: '/pricing', label: 'Pricing' },
             { href: '/services', label: 'Services' },
             { href: '/#about', label: 'About' },

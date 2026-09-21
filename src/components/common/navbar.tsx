@@ -29,7 +29,7 @@ export default function Nav() {
       }
     };
 
-    if (pathname === path || pathname === '/home') {
+    if (pathname === path || pathname === '/') {
       scrollToHash();
     } else {
       router.push(href);
@@ -40,8 +40,8 @@ export default function Nav() {
   const navLinks = [
     { href: '/pricing', label: 'Pricing' },
     { href: '/services', label: 'Services' },
-    { href: '/home#about', label: 'About' },
-    { href: '/home#team', label: 'Team' },
+    { href: '/#about', label: 'About' },
+    { href: '/#team', label: 'Team' },
     { href: '/contact', label: 'Contact' },
   ];
 
@@ -55,7 +55,7 @@ export default function Nav() {
       >
         {/* Logo */}
         <Link
-          href="/home"
+          href="/"
           style={{
             fontFamily: 'var(--font-playfair)',
             fontWeight: 900,

@@ -7,9 +7,9 @@ import ServiceContactCTA from '@/components/services/service-contact-us';
 
 export const metadata = {
   title:
-    'Services | Auto Craft — SaaS Development, AI Automation & Web Design India',
+    'SaaS Development, AI Automation & Web Design Services in India | Auto Craft',
   description:
-    'Auto Craft offers SaaS product development, AI automation workflows, and high-performance web design across all 28 states of India. Best IT services company Ghaziabad, UP.',
+    'Auto Craft builds SaaS products, AI workflow automations, and high-performance websites for businesses across India. Based in Ghaziabad.',
   keywords: [
     'SaaS development services India',
     'AI automation services India',
@@ -28,7 +28,7 @@ export const metadata = {
     canonical: 'https://autocraft-phi.vercel.app/services',
   },
   openGraph: {
-    title: 'Services | Auto Craft — Best IT Services India',
+    title: 'SaaS Development, AI Automation & Web Design Services | Auto Craft',
     description:
       'SaaS development, AI automation, and web design services across India. Auto Craft — Indrapuram, Ghaziabad.',
     url: 'https://autocraft-phi.vercel.app/services',

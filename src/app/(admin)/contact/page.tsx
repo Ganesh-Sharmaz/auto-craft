@@ -5,10 +5,9 @@ import Founders from '@/components/contact/founder';
 import ProcessSection from '@/components/services/process-section';
 
 export const metadata = {
-  title:
-    'Contact Auto Craft | Best IT Company India | Meet the Founders | Ghaziabad',
+  title: 'Contact Auto Craft | SaaS, AI Automation & Web Development India',
   description:
-    "Contact Auto Craft — India's best SaaS & AI automation company. Meet founders Dharmendra Yadav and Ganesh Sharma. Based in Indrapuram, Ghaziabad, serving all 28 states.",
+    'Contact Auto Craft for SaaS development, AI automation, and web development projects. Meet the founders in Indrapuram, Ghaziabad.',
   keywords: [
     'Auto Craft contact',
     'best IT company India',
@@ -21,7 +20,7 @@ export const metadata = {
     canonical: 'https://autocraft-phi.vercel.app/contact',
   },
   openGraph: {
-    title: 'Contact Auto Craft | Meet the Founders | Best IT Company India',
+    title: 'Contact Auto Craft | Meet the Founders in Ghaziabad',
     description:
       'Meet Dharmendra Yadav and Ganesh Sharma — the builders behind Auto Craft.',
     url: 'https://autocraft-phi.vercel.app/contact',

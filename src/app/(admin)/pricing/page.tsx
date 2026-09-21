@@ -7,9 +7,9 @@ import ServiceContactCTA from '@/components/services/service-contact-us';
 import ContactForm from '@/components/common/contact-form';
 
 export const metadata = {
-  title: 'Pricing | Auto Craft — Transparent Software Development Costs India',
+  title: 'SaaS, AI Automation & Web Development Pricing in India | Auto Craft',
   description:
-    'Honest, transparent pricing for SaaS development, AI automation, and web design across India. No hidden costs. Flexible engagements for startups and enterprises. Auto Craft, Indrapuram, Ghaziabad.',
+    'Transparent starting prices for SaaS development, AI automation, and web development in India. Clear scope, milestone payments, and no hidden costs.',
   keywords: [
     'software development cost India',
     'SaaS development pricing India',
@@ -28,7 +28,7 @@ export const metadata = {
     canonical: 'https://autocraft-phi.vercel.app/pricing',
   },
   openGraph: {
-    title: 'Pricing | Auto Craft — Transparent IT Services India',
+    title: 'SaaS, AI Automation & Web Development Pricing | Auto Craft',
     description:
       'Transparent pricing for SaaS, AI automation, and web development. Auto Craft — Indrapuram, Ghaziabad. Flexible plans for every budget.',
     url: 'https://autocraft-phi.vercel.app/pricing',

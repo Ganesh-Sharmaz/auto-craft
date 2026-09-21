@@ -1,0 +1,37 @@
+[
+  {
+    "state": "Uttar Pradesh",
+    "stateSlug": "uttar-pradesh",
+    "market": "Delhi NCR, manufacturing, education, healthcare, logistics, and fast-growing regional businesses",
+    "focus": ["SaaS development", "AI workflow automation", "web development"],
+    "summary": "From our Ghaziabad base, Auto Craft helps businesses across Uttar Pradesh replace manual work with reliable software, automation, and high-performance websites."
+  },
+  {
+    "state": "Maharashtra",
+    "stateSlug": "maharashtra",
+    "market": "finance, fintech, media, manufacturing, software, logistics, and startup businesses",
+    "focus": ["SaaS products", "AI automation", "digital platforms"],
+    "summary": "Auto Craft works remotely with Maharashtra businesses that need software products, intelligent workflows, and digital experiences built for growth."
+  },
+  {
+    "state": "Karnataka",
+    "stateSlug": "karnataka",
+    "market": "startups, SaaS, engineering, fintech, healthcare, education, and technology companies",
+    "focus": ["SaaS development", "AI products", "web applications"],
+    "summary": "Auto Craft supports Karnataka startups and businesses with product engineering, AI automation, and conversion-focused web development."
+  },
+  {
+    "state": "Telangana",
+    "stateSlug": "telangana",
+    "market": "technology, healthcare, life sciences, fintech, enterprise services, agriculture, and logistics",
+    "focus": ["SaaS platforms", "AI workflow automation", "business websites"],
+    "summary": "Auto Craft builds practical digital systems for Telangana businesses, from AI-enabled workflows to scalable SaaS and web applications."
+  },
+  {
+    "state": "Tamil Nadu",
+    "stateSlug": "tamil-nadu",
+    "market": "software, automotive, healthcare, manufacturing, engineering, textiles, logistics, and education",
+    "focus": ["custom software", "AI automation", "web development"],
+    "summary": "Auto Craft partners with Tamil Nadu businesses on software, automation, and web projects that connect operations with measurable growth."
+  }
+]

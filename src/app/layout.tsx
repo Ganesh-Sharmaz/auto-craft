@@ -23,20 +23,34 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://autocraft-phi.vercel.app'),
-  title:
-    'Auto Craft | Best IT Services & AI Automation Company in India | SaaS Development Ghaziabad',
+  title: 'Auto Craft | SaaS, AI Automation & Web Development India',
   description:
-    "Auto Craft — India's #1 SaaS development, AI automation & web design agency. Serving Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune & all 28 states. Best IT services company in India. Call: +91 63064 50212.",
-  keywords:
-    'best IT services company India, best software developer India, AI automation India, SaaS development India, web development India, best IT company Ghaziabad, best developer India, AI automation company India, SaaS company India, website development India, software development company India, IT services Delhi NCR, AI automation Delhi, best web agency India, top software company India, IT company Uttar Pradesh, AI automation Uttar Pradesh, SaaS development Delhi, web design India, automation company India, best tech company India, software agency Ghaziabad, AI solutions India, digital transformation India, best developer Ghaziabad, IT services Noida, software company Noida, web development Delhi NCR, AI company India, machine learning automation India, business automation India, workflow automation India, full-stack development India, startup tech partner India, IT outsourcing India, software development Indrapuram',
-  authors: [{ name: 'Dharmendra Yadav' }, { name: 'Ganesh Sharma' }],
-  robots:
-    'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
-  alternates: { canonical: 'https://autocraft-phi.vercel.app/home' },
+    'Auto Craft builds SaaS products, AI automations, and high-performance websites for businesses across India. Based in Indrapuram, Ghaziabad.',
+  keywords: [
+    'SaaS development India',
+    'AI automation company India',
+    'web development company India',
+    'software development Ghaziabad',
+    'Auto Craft',
+  ],
+  authors: [{ name: 'Ganesh Sharma' }],
+  creator: 'Ganesh Sharma',
+  publisher: 'Auto Craft',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
+  },
   openGraph: {
     type: 'website',
     url: 'https://autocraft-phi.vercel.app/',
-    title: 'Auto Craft | Best IT Services & AI Automation Company in India',
+    title: 'Auto Craft | SaaS, AI Automation & Web Development India',
     description:
       'Top-rated SaaS development, AI automation & web design agency based in Ghaziabad. Serving businesses across all 28 states of India.',
     siteName: 'Auto Craft',
@@ -44,9 +58,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Auto Craft | Best IT Services & AI Automation Company in India',
+    title: 'Auto Craft | SaaS, AI Automation & Web Development India',
     description:
-      "SaaS development, AI automation & web design. India's top tech agency based in Ghaziabad.",
+      'SaaS products, AI automations, and high-performance websites by Auto Craft.',
   },
   other: {
     'geo.region': 'IN-UP',
@@ -158,6 +172,24 @@ const faqSchema = {
   ],
 };
 
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://autocraft-phi.vercel.app/#website',
+  name: 'Auto Craft',
+  alternateName: 'Auto Craft India',
+  url: 'https://autocraft-phi.vercel.app/',
+  author: {
+    '@type': 'Person',
+    name: 'Ganesh Sharma',
+  },
+  publisher: {
+    '@type': 'Organization',
+    '@id': 'https://autocraft-phi.vercel.app/#organization',
+    name: 'Auto Craft',
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -174,6 +206,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body className={`${playfair.variable} ${geistMono.variable} font-geist`}>

@@ -110,13 +110,13 @@ export default function ServicesHero() {
           zIndex: 10,
         }}
       >
-        Three core services.
+        SaaS products, AI workflows,
         <br />
-        One standard: exceptional.
+        and high-performance websites.
         <br />
-        Serving businesses across
+        Built for businesses across
         <br />
-        all 28 states of India.
+        India from Ghaziabad.
       </motion.p>
     </section>
   );

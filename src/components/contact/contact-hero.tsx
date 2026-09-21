@@ -103,11 +103,11 @@ export default function ContactHero() {
           marginTop: '48px',
         }}
       >
-        Two engineers. One mission.
+        Start a SaaS, AI automation,
         <br />
-        Building the future of software
+        or web development project
         <br />
-        from Ghaziabad, India.
+        with Auto Craft in India.
       </motion.p>
     </section>
   );
