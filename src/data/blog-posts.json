@@ -1,0 +1,892 @@
+[
+  {
+    "slug": "what-is-jev-ai-typesafe-system-one-model",
+    "kicker": "AI Engineering",
+    "title": "What is Jev AI? TypeSafe's decision model for the agent era",
+    "subtitle": "Jev is not another chatbot. It is a new kind of AI model designed to make fast, structured and probabilistic decisions inside software and AI agent workflows.",
+    "excerpt": "Jev AI from TypeSafe is gaining attention for replacing free-form text generation with typed decisions. Here is how Jev works, why it was introduced, who should use it, where it fits beside LLMs, and what it could mean for AI agents.",
+    "category": "AI & Engineering",
+    "tags": [
+      "jev-ai",
+      "typesafe-ai",
+      "system-one-model",
+      "ai-agents",
+      "agentic-ai",
+      "llm",
+      "ai-automation",
+      "decision-models",
+      "structured-ai"
+    ],
+    "publishedAt": "2026-09-21",
+    "updatedAt": "2026-09-21",
+    "readingTime": "11 min read",
+    "image": "/images/blog/what-is-jev-ai-typesafe-system-one-model.png?v=2",
+    "author": {
+      "name": "Ganesh Sharma",
+      "role": "Founder, Auto Craft",
+      "image": "/images/ganesh-suit-close-up.PNG"
+    },
+    "content": [
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "What is Jev AI?"
+      },
+      {
+        "type": "paragraph",
+        "text": "Jev is an AI model developed by TypeSafe AI for making structured decisions inside software. Unlike a traditional large language model such as ChatGPT, Claude or Gemini, Jev is not primarily designed to write paragraphs, hold conversations or generate arbitrary text. Its purpose is much narrower: receive information about a situation and return a decision that software can use directly."
+      },
+      {
+        "type": "paragraph",
+        "text": "TypeSafe describes Jev as its first System One Model. The idea is to create an intelligence layer optimized for fast decisions rather than natural-language generation. A developer can give Jev the current state of a workflow and ask it questions such as which tool an AI agent should use, which department should receive a support request, whether an operation appears risky, or whether a result should be reviewed by a human."
+      },
+      {
+        "type": "callout",
+        "label": "Jev in one sentence",
+        "text": "Jev turns unstructured context into structured decisions with probabilities that normal application code can inspect and act on.",
+        "items": [
+          "LLMs mainly generate content.",
+          "Jev mainly chooses, scores and evaluates.",
+          "Its outputs are designed to be consumed by software rather than read as an essay.",
+          "It can complement an LLM rather than replacing one."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Why was Jev introduced?"
+      },
+      {
+        "type": "paragraph",
+        "text": "The rise of AI agents has exposed an important mismatch between language models and software automation. Large language models are extremely capable at understanding instructions and generating text, but an autonomous workflow often does not need another paragraph. It needs a decision."
+      },
+      {
+        "type": "paragraph",
+        "text": "An agent may need to decide whether to call a search tool or a database, whether to retry a failed operation, whether a request belongs to billing or technical support, whether a transaction deserves review, or whether it has enough confidence to continue without human approval. Developers can ask a general-purpose LLM to make these choices, but that often means generating and parsing text for a task that ultimately becomes a small branch in code."
+      },
+      {
+        "type": "paragraph",
+        "text": "Jev was introduced to attack that problem directly. Instead of optimizing a model around producing language that humans like reading, TypeSafe is attempting to optimize around calibrated decisions that machines can use. That distinction becomes increasingly important as AI moves from chat interfaces into background processes, agents and automated business systems."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "What does TypeSafe mean by a System One Model?"
+      },
+      {
+        "type": "paragraph",
+        "text": "TypeSafe uses the term System One Model for AI designed around fast and repeatable decisions. The name borrows conceptually from the distinction between fast intuitive decisions and slower deliberate reasoning, although Jev is an engineered machine-learning system rather than a literal recreation of human cognition."
+      },
+      {
+        "type": "paragraph",
+        "text": "For developers, the important part is simpler: Jev is not trying to solve every AI problem. It is deliberately specialized. It accepts state describing the current situation, evaluates questions defined by the developer, and returns structured results with probabilities."
+      },
+      {
+        "type": "list",
+        "style": "bullet",
+        "items": [
+          "Input: the state or context required for a decision.",
+          "Question: a developer-defined choice, score or judgement.",
+          "Output: a typed answer that application code can consume.",
+          "Probability: information about how strongly the model supports a possible outcome.",
+          "Application logic: thresholds determine whether software acts automatically or asks for review."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "How Jev is different from a traditional LLM"
+      },
+      {
+        "type": "paragraph",
+        "text": "A general-purpose LLM and Jev may both understand text, but they are designed for different outputs. An LLM is usually asked to continue a sequence of tokens and produce language. Jev is designed to return decisions over possibilities defined by the application."
+      },
+      {
+        "type": "paragraph",
+        "text": "Imagine a support message saying that a customer's card was charged twice and they want their money back. A normal LLM might produce a helpful explanation or draft a response. Jev could instead answer questions such as which support category the request belongs to, how urgent it appears, and whether the workflow should be escalated to a person."
+      },
+      {
+        "type": "list",
+        "style": "bullet",
+        "items": [
+          "Use an LLM when you need writing, explanation, summarization or open-ended reasoning.",
+          "Use Jev when you already know the possible actions and need intelligence to choose between them.",
+          "Use both when an agent needs a structured decision followed by natural-language execution."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Jev is not simply JSON mode"
+      },
+      {
+        "type": "paragraph",
+        "text": "Modern LLM APIs can already return JSON or follow structured-output schemas, so it is reasonable to ask why Jev is different. JSON mode changes the format of a generative model's output. It does not fundamentally change what that model was trained and optimized to do."
+      },
+      {
+        "type": "paragraph",
+        "text": "Jev's proposition is more fundamental: structured decision-making is the primary task rather than a formatting layer added to text generation. In a large automated system, that specialization may matter for latency, cost, consistency and how uncertainty is represented."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "The three kinds of decisions Jev can make"
+      },
+      {
+        "type": "paragraph",
+        "text": "Jev's developer model revolves around a small set of decision primitives. Rather than asking an unrestricted question and parsing whatever text comes back, the application describes what kind of decision it needs."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Choice: select between known options"
+      },
+      {
+        "type": "paragraph",
+        "text": "Choice is useful when software already knows the possible destinations. An AI agent could choose between search, database, calculator and browser tools. A customer-service workflow could choose between billing, technical support, account access and cancellation."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Score: evaluate something on a scale"
+      },
+      {
+        "type": "paragraph",
+        "text": "Scoring is useful when the result is not simply one category. A system might estimate severity, relevance, quality, risk or priority and then apply its own thresholds around the returned value."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Probabilistic yes-or-no judgement"
+      },
+      {
+        "type": "paragraph",
+        "text": "Binary questions are useful for gates inside workflows: does this request appear urgent, should this output be reviewed, is the information sufficient to continue, or does this operation appear suspicious? Instead of receiving a paragraph explaining the answer, software can receive a probability and branch accordingly."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Why calibrated probability matters"
+      },
+      {
+        "type": "paragraph",
+        "text": "One of the more interesting ideas behind Jev is that software should not only receive an answer; it should also understand uncertainty. In production systems, being uncertain is often more valuable than confidently making the wrong decision."
+      },
+      {
+        "type": "paragraph",
+        "text": "Suppose an automated support router gives the billing category a probability of 0.96. A company may decide that the ticket can be routed automatically. If the strongest category receives only 0.52, the same workflow could send the request to a general queue or request human review."
+      },
+      {
+        "type": "callout",
+        "label": "Why confidence changes automation",
+        "text": "Probability gives application developers a control surface between fully manual workflows and blindly autonomous AI.",
+        "items": [
+          "High confidence can allow automatic execution.",
+          "Medium confidence can trigger additional checks.",
+          "Low confidence can escalate to a human.",
+          "Different business risks can use different thresholds."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Can Jev hallucinate?"
+      },
+      {
+        "type": "paragraph",
+        "text": "TypeSafe markets Jev as avoiding hallucinations because it does not generate unrestricted text strings. That is useful, but the distinction needs to be understood correctly. Constraining the output means Jev cannot suddenly invent a paragraph, fake URL or unsupported sentence in the same way a generative chatbot might."
+      },
+      {
+        "type": "paragraph",
+        "text": "It can still make the wrong decision. A classifier can send a ticket to the wrong department. A scoring model can underestimate risk. A routing model can select the wrong tool. For production engineering, the important benefit is therefore not magical infallibility; it is a smaller and more controllable output space combined with explicit probabilities."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Where Jev fits inside an AI agent"
+      },
+      {
+        "type": "paragraph",
+        "text": "Jev becomes especially interesting when placed inside an agent harness. An AI agent rarely performs one continuous task. It repeatedly observes its state, decides what should happen next, invokes a tool, examines the result and decides again."
+      },
+      {
+        "type": "paragraph",
+        "text": "A general LLM can perform every one of those steps, but that can be expensive and unnecessarily slow when many steps are simple routing decisions. A specialized model such as Jev could handle some of the repeated control decisions while a more capable generative or reasoning model handles tasks that actually require language generation or deeper reasoning."
+      },
+      {
+        "type": "list",
+        "style": "number",
+        "items": [
+          "The agent receives a user request or system event.",
+          "Jev classifies the request and chooses an appropriate workflow.",
+          "The application invokes the selected tool or specialist agent.",
+          "A generative LLM performs reasoning, coding or content generation where required.",
+          "Jev evaluates whether another action, retry or escalation is appropriate.",
+          "Low-confidence or high-risk decisions can be sent to a human."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Who should consider using Jev?"
+      },
+      {
+        "type": "paragraph",
+        "text": "Jev is primarily interesting to developers and organizations building software that makes many repeated decisions. It is less relevant to somebody who simply wants an AI chatbot or writing assistant."
+      },
+      {
+        "type": "list",
+        "style": "bullet",
+        "items": [
+          "AI agent developers that need tool routing or orchestration.",
+          "Backend engineers building intelligent workflow systems.",
+          "SaaS products that classify large volumes of user input.",
+          "Support platforms routing tickets or detecting escalation conditions.",
+          "Sales systems qualifying and routing leads.",
+          "Security or operations systems that need probabilistic gates.",
+          "Automation platforms deciding which workflow should run.",
+          "Multi-agent architectures choosing which specialist agent receives a task."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "When Jev is probably the wrong choice"
+      },
+      {
+        "type": "paragraph",
+        "text": "Specialization is also Jev's main limitation. If your product needs open-ended conversation, long explanations, creative writing or generation of arbitrary content, a conventional LLM remains the more appropriate tool."
+      },
+      {
+        "type": "list",
+        "style": "bullet",
+        "items": [
+          "Do not choose Jev primarily for chatbot responses.",
+          "Do not use it as a replacement for a writing model.",
+          "Do not expect it to generate full reports or codebases.",
+          "Do not replace deterministic business rules with AI when a normal if statement already solves the problem perfectly.",
+          "Do not automatically execute high-risk actions only because a probability crossed an arbitrary threshold."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "How to think about using Jev in a real application"
+      },
+      {
+        "type": "paragraph",
+        "text": "The cleanest way to adopt Jev is not to redesign an entire application around it. Start by locating a repeated decision currently handled by a large model, manual review or complicated heuristic logic."
+      },
+      {
+        "type": "paragraph",
+        "text": "A useful first experiment has known options, measurable correctness and inexpensive failure. Ticket classification is a better starting point than automatically approving financial transactions because the first workflow is easier to evaluate and reverse."
+      },
+      {
+        "type": "list",
+        "style": "number",
+        "items": [
+          "Identify one repeated decision with a finite or measurable output.",
+          "Define exactly what information the model is allowed to consider.",
+          "Specify the choices, score or binary judgement your application needs.",
+          "Collect representative historical examples.",
+          "Measure Jev against the current workflow.",
+          "Choose confidence thresholds using real error data rather than intuition.",
+          "Add human review for ambiguous or high-risk cases.",
+          "Monitor errors after deployment and adjust the workflow as real data arrives."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Example: support ticket routing with Jev"
+      },
+      {
+        "type": "paragraph",
+        "text": "Consider a SaaS product receiving thousands of support requests. A traditional rules engine might look for keywords such as refund, login or invoice, but natural language quickly makes those rules brittle. A full LLM can classify each ticket, but the application may not need a generated explanation every time."
+      },
+      {
+        "type": "paragraph",
+        "text": "With a decision model, the ticket becomes the state and the application defines its allowed destinations: billing, technical support, account access, cancellation or other. Jev returns probabilities over those choices. The backend can automatically route obvious cases and send uncertain ones to a general queue."
+      },
+      {
+        "type": "paragraph",
+        "text": "That architecture demonstrates why Jev is interesting. The AI does not own the workflow. The software still defines what actions are possible, what confidence is required, and what happens when the model is uncertain."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Example: tool routing inside an AI coding agent"
+      },
+      {
+        "type": "paragraph",
+        "text": "A coding agent may have access to repository search, file reading, shell execution, tests, documentation lookup and version-control tools. Not every step requires a frontier reasoning model to decide which one should run next."
+      },
+      {
+        "type": "paragraph",
+        "text": "A decision-focused model could inspect the agent state and rank the available actions. If repository search is overwhelmingly appropriate, the harness can execute it. If the choice is ambiguous, the system can defer to a stronger reasoning model. This creates a hierarchy where expensive intelligence is used only when the workflow actually needs it."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Why speed matters for agentic AI"
+      },
+      {
+        "type": "paragraph",
+        "text": "Latency becomes much more important when an AI system operates as an agent rather than a chatbot. A user may tolerate several seconds for one sophisticated response. An autonomous workflow might make dozens or hundreds of internal decisions while completing a single task."
+      },
+      {
+        "type": "paragraph",
+        "text": "If every tiny routing decision requires a multi-second model call, latency compounds quickly. A fast decision layer changes the economics of agent architecture because developers can place intelligence at many more points in a workflow without making the entire process feel painfully slow."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Why cost matters even more"
+      },
+      {
+        "type": "paragraph",
+        "text": "The same multiplication applies to cost. The expense of one model call may look insignificant, but an agent can make many calls per task and a production service can execute millions of tasks. Routing, filtering and scoring therefore become surprisingly important parts of the AI bill."
+      },
+      {
+        "type": "paragraph",
+        "text": "TypeSafe currently advertises Jev at $0.042 per million input tokens with no charge for its structured output. That pricing makes it attractive for high-volume decision layers, although teams should always verify current API and gateway pricing before designing production economics around it."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Jev vs LLM: which one should you use?"
+      },
+      {
+        "type": "paragraph",
+        "text": "The most useful comparison is not Jev versus LLMs as competing products. They solve different parts of an intelligent software stack."
+      },
+      {
+        "type": "list",
+        "style": "bullet",
+        "items": [
+          "Need a conversational answer? Use an LLM.",
+          "Need an article, summary or explanation? Use an LLM.",
+          "Need complex open-ended reasoning? Use a capable reasoning model.",
+          "Need to choose one route from known alternatives? Jev may fit.",
+          "Need a confidence-aware classification? Jev may fit.",
+          "Need repeated low-latency decisions throughout an agent workflow? Jev becomes especially interesting.",
+          "Need both decisions and generation? Combine Jev with an LLM."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Why Jev is gaining attention so quickly"
+      },
+      {
+        "type": "paragraph",
+        "text": "Jev arrived at a particularly good moment. AI development is moving from impressive chat demonstrations toward agents that execute real workflows. That transition exposes the cost and awkwardness of using a general-purpose generative model for every internal decision."
+      },
+      {
+        "type": "paragraph",
+        "text": "Its early developer interest also appears substantial. Vercel reported that Jev became the fastest-adopted model launch in its AI Gateway at the time, reaching nearly 13 percent of paid teams within its first 24 hours. Early adoption is not proof that the architecture will become an industry standard, but it does show that developers are actively searching for alternatives to treating every AI problem as text generation."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "What Jev says about the future of AI software"
+      },
+      {
+        "type": "paragraph",
+        "text": "For most of the generative AI boom, intelligence has been exposed through a conversation box. Jev represents a different idea: intelligence can become an invisible primitive inside ordinary software."
+      },
+      {
+        "type": "paragraph",
+        "text": "Users may never know a decision model was involved. They simply experience a support request reaching the right department, an agent selecting the right tool, a suspicious action being reviewed, or a workflow adapting to information that would have defeated a rigid rules engine."
+      },
+      {
+        "type": "paragraph",
+        "text": "That may be the bigger story behind Jev. The next stage of AI adoption may not be defined only by larger chatbots. It may be defined by smaller and more specialized forms of intelligence placed throughout software systems."
+      },
+      {
+        "type": "divider"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Should developers start using Jev today?"
+      },
+      {
+        "type": "paragraph",
+        "text": "Jev is new, so developers should approach it as an engineering tool to evaluate rather than as a guaranteed replacement for established architectures. TypeSafe's performance and efficiency claims are promising, but your own production data matters more than a launch benchmark."
+      },
+      {
+        "type": "paragraph",
+        "text": "If you already operate an AI workflow where a costly language model repeatedly performs classification, routing or scoring, Jev is worth testing. Build a small evaluation set, compare accuracy and latency with the existing implementation, inspect failure cases, and calculate the real cost difference."
+      },
+      {
+        "type": "callout",
+        "label": "Best first experiment",
+        "text": "Replace one narrow LLM-based decision with Jev and measure it before expanding.",
+        "items": [
+          "Use historical production examples.",
+          "Compare decision accuracy.",
+          "Measure latency and cost.",
+          "Inspect low-confidence cases separately.",
+          "Keep an easy rollback path."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Jev may be more important as an idea than as a single model"
+      },
+      {
+        "type": "paragraph",
+        "text": "Even if Jev itself changes dramatically over the next few years, the design direction is worth paying attention to. AI models do not necessarily need to become one universal brain responsible for every task."
+      },
+      {
+        "type": "paragraph",
+        "text": "Software has always benefited from specialized components. Databases store data, queues coordinate asynchronous work, search engines retrieve information and caches reduce repeated computation. Decision models could become another specialized layer: small pieces of intelligence invoked wherever rigid rules are insufficient but full generative reasoning is unnecessary."
+      },
+      {
+        "type": "paragraph",
+        "text": "For developers building the next generation of AI agents, that distinction could become fundamental. The future stack may not be one enormous model doing everything. It may be a coordinated system in which generative models reason and communicate while specialized models quietly decide what should happen next."
+      }
+    ],
+    "takeaways": [
+      "Jev is TypeSafe AI's first System One Model, built for structured decisions rather than free-form text generation.",
+      "It is best suited to routing, classification, scoring, gating and other repeated decisions inside AI agents and software workflows.",
+      "Jev is better understood as a complement to LLMs than a direct replacement for ChatGPT-style models.",
+      "Its use of probabilities lets developers build confidence thresholds for automatic execution, additional checks or human review.",
+      "Jev's constrained outputs reduce some problems associated with generative text, but the model can still make incorrect decisions.",
+      "The larger trend behind Jev is the emergence of specialized AI models designed to operate invisibly inside software rather than communicate directly with users."
+    ]
+  },
+  {
+    "slug": "ai-agent-harness-engineering-2026",
+    "kicker": "AI Engineering",
+    "title": "The AI agent race is becoming a harness engineering problem",
+    "subtitle": "The next generation of useful AI agents will not be defined by the model alone, but by the systems that give models context, tools, memory, evaluations, and safe ways to act.",
+    "excerpt": "AI agents are moving beyond chat into coding, research, testing, and long-running workflows. The real engineering challenge in 2026 is building the harness that makes those agents reliable.",
+    "category": "AI & Engineering",
+    "tags": [
+      "ai-agents",
+      "agentic-ai",
+      "harness-engineering",
+      "coding-agents",
+      "llm",
+      "developer-tools"
+    ],
+    "publishedAt": "2026-09-21",
+    "updatedAt": "2026-09-21",
+    "readingTime": "8 min read",
+    "image": "/images/blog/ai-agent-harness-engineering-2026.png?v=2",
+    "author": {
+      "name": "Ganesh Sharma",
+      "role": "Founder, Auto Craft",
+      "image": "/images/ganesh-suit-close-up.PNG"
+    },
+    "content": [
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "The model is no longer the whole product"
+      },
+      {
+        "type": "paragraph",
+        "text": "For the last few years, AI product discussions have usually started with the model: which one reasons better, writes better code, has a larger context window, or scores higher on a benchmark. That still matters, but the conversation is changing. As models become capable enough to work for minutes or hours, use terminals, browse documentation, edit files, run tests, and coordinate subtasks, the quality of the surrounding system becomes just as important as the model itself."
+      },
+      {
+        "type": "paragraph",
+        "text": "That surrounding system is increasingly described as the agent harness. It is the layer that decides what context the model sees, which tools it can use, how results are verified, when work should be retried, what state should persist, and where a human must remain in control. Two applications can use the same underlying model and still produce dramatically different results because one gives the model a disciplined operating environment while the other gives it little more than a prompt and a collection of tools."
+      },
+      {
+        "type": "callout",
+        "label": "The shift",
+        "text": "The competitive question is moving from \"Which model should we call?\" to \"What system helps the model complete useful work reliably?\"",
+        "items": [
+          "Context determines what the agent knows right now.",
+          "Tools determine what the agent can actually do.",
+          "Evaluations determine whether changes make the system better or quietly break it.",
+          "Permissions and approvals determine how much damage a wrong decision can cause."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Why harness engineering is suddenly important"
+      },
+      {
+        "type": "paragraph",
+        "text": "A chatbot can fail and simply give a weak answer. An agent can fail after changing code, editing a configuration file, opening a pull request, sending a message, or modifying business data. The moment an AI system can take actions, reliability becomes an engineering problem rather than a prompt-writing problem."
+      },
+      {
+        "type": "paragraph",
+        "text": "Recent work from major AI and developer platforms points in the same direction. Coding agents are being evaluated on long-horizon tasks instead of isolated snippets. Agent platforms are adding persistent execution environments, subagents, tool orchestration, and stronger controls. Researchers are also studying whether agents can run experiments and improve parts of the AI development process itself. The common theme is that useful autonomy requires infrastructure around the model."
+      },
+      {
+        "type": "list",
+        "style": "bullet",
+        "items": [
+          "Long-running tasks need checkpoints so work can resume instead of restarting.",
+          "Tool use needs narrow permissions and predictable interfaces.",
+          "Agents need tests that verify intermediate behavior, not only the final answer.",
+          "Context needs to be selected deliberately instead of dumping an entire codebase into every request.",
+          "Failures need to be observable so developers can understand why an agent made the wrong move."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "A good agent needs more than a large context window"
+      },
+      {
+        "type": "paragraph",
+        "text": "It is tempting to treat context length as a replacement for architecture: give the model every file, every document, and every conversation and let it figure things out. In practice, more context can also introduce noise, stale information, conflicting instructions, and unnecessary cost. A strong harness retrieves the smallest useful set of information for the current step and makes important project rules easy to rediscover."
+      },
+      {
+        "type": "paragraph",
+        "text": "For a coding agent, that might mean providing the relevant module, architecture notes, test commands, repository conventions, and a concise description of the task. For a business automation agent, it might mean loading the customer's current record, the approved policy, the latest conversation, and only the tools required for that workflow. Good context engineering is less about maximum information and more about maximum relevance."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Behavioral evaluations may matter more than one benchmark score"
+      },
+      {
+        "type": "paragraph",
+        "text": "Traditional benchmarks are useful for comparing broad capability, but they do not always explain why an agent succeeds or fails inside a real product. A team may upgrade a model and see the overall score improve while a critical workflow becomes less reliable. That is why agent engineering is moving toward smaller behavioral evaluations that test the actions the system is expected to take."
+      },
+      {
+        "type": "paragraph",
+        "text": "Instead of asking only whether the final output looked correct, a behavioral test can verify that an agent inspected the right file before editing, used the correct tool, avoided a protected directory, ran the relevant test suite, or requested approval before an irreversible action. These checks turn agent behavior into something closer to ordinary software engineering: observable, repeatable, and testable."
+      },
+      {
+        "type": "list",
+        "style": "number",
+        "items": [
+          "Define the behavior you expect from the agent.",
+          "Create a small scenario that triggers that behavior.",
+          "Record the important tool calls, file changes, and decisions.",
+          "Run the evaluation whenever prompts, tools, models, or permissions change.",
+          "Keep end-to-end benchmarks for broad capability, but use behavioral tests to diagnose regressions."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Long-horizon agents change how software gets built"
+      },
+      {
+        "type": "paragraph",
+        "text": "The interesting leap is not an agent generating a function in ten seconds. It is an agent taking responsibility for a bounded outcome: investigating a bug, reproducing it, editing the implementation, running tests, checking the diff, and preparing the result for review. As evaluation moves toward tasks that normally take engineers hours or days, agent systems begin to look less like autocomplete and more like delegated execution."
+      },
+      {
+        "type": "paragraph",
+        "text": "This does not remove the developer from the loop. It changes where the developer spends attention. Humans increasingly define the goal, establish constraints, review architecture, inspect risky changes, and decide what deserves production access. The agent handles more of the mechanical traversal between those decisions."
+      },
+      {
+        "type": "quote",
+        "text": "The useful unit of AI progress is shifting from better responses to better completed workflows.",
+        "attribution": "Auto Craft"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Autonomous research is the more surprising direction"
+      },
+      {
+        "type": "paragraph",
+        "text": "The same pattern is appearing in AI research itself. Instead of using a model only to suggest an experiment, teams are building loops where an agent can modify training code, launch experiments, inspect results, compare metrics, and continue iterating within defined boundaries. This is important because research progress depends on thousands of small decisions that are individually understandable but expensive to perform repeatedly."
+      },
+      {
+        "type": "paragraph",
+        "text": "An autonomous research loop does not need to invent a new scientific field to be valuable. If it can reliably explore hyperparameters, test hypotheses, eliminate failed directions, and preserve the evidence behind each decision, it can compress the time between an idea and a useful result. The bottleneck then moves toward experiment design, evaluation quality, compute, and the rules governing what the agent is allowed to change."
+      },
+      {
+        "type": "divider"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "The architecture of a practical agent harness"
+      },
+      {
+        "type": "paragraph",
+        "text": "There is no single architecture that fits every agent, but the strongest systems tend to separate responsibilities instead of hiding everything inside one giant prompt. That makes the workflow easier to debug and gives developers places to enforce boundaries."
+      },
+      {
+        "type": "list",
+        "style": "bullet",
+        "items": [
+          "Planner: converts the user goal into a bounded sequence of work.",
+          "Context layer: retrieves the files, records, instructions, and history relevant to the current step.",
+          "Tool layer: exposes explicit operations such as reading files, running commands, querying data, or calling external services.",
+          "Execution environment: gives the agent a stable place to run code and preserve intermediate state.",
+          "Evaluation layer: checks whether the agent followed required behaviors and whether the result actually works.",
+          "Memory layer: preserves useful state across steps or sessions without treating every past interaction as equally important.",
+          "Permission layer: restricts sensitive actions and introduces human approval where consequences are difficult to reverse.",
+          "Observability layer: records decisions, tool calls, failures, retries, and outputs for debugging."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "What this means for developers and small teams"
+      },
+      {
+        "type": "paragraph",
+        "text": "Small teams do not need to build a massive multi-agent platform to benefit from this shift. In fact, the simplest useful agent is often a single capable model inside a carefully constrained workflow. Start with one outcome that can be verified, give the agent only the tools required to reach it, and build a small evaluation set from real failures."
+      },
+      {
+        "type": "paragraph",
+        "text": "For a SaaS team, that could be an agent that investigates failed background jobs and prepares a diagnosis. For an agency, it could turn an approved website brief into a project scaffold and checklist. For an internal operations team, it could collect information from several systems and prepare a reviewable action instead of immediately executing it. The value comes from reducing repeated coordination, not from adding as many agents as possible."
+      },
+      {
+        "type": "callout",
+        "label": "A practical rule",
+        "text": "Add autonomy only where you can also add verification.",
+        "items": [
+          "If the result can be tested automatically, the agent can usually operate with more independence.",
+          "If the action is reversible, experimentation is cheaper.",
+          "If the action affects money, customers, security, or production data, require stronger controls.",
+          "If nobody can define what success looks like, the workflow is not ready for autonomous execution."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "The next AI moat may be the system around the model"
+      },
+      {
+        "type": "paragraph",
+        "text": "Foundation models will continue to improve, and model choice will remain important. But as capable models become available to more developers, simply having access to intelligence becomes less differentiating. The harder advantage to copy is the accumulated engineering around that intelligence: the context rules, domain-specific tools, evaluations, permissions, workflow history, and operational knowledge that make an agent dependable inside a particular product."
+      },
+      {
+        "type": "paragraph",
+        "text": "That is why harness engineering is worth watching. It represents the point where AI development starts looking less like experimenting with prompts and more like building a new kind of software runtime. The teams that learn how to measure, constrain, and improve agent behavior will be able to give models more responsibility without giving up control."
+      }
+    ],
+    "takeaways": [
+      "AI agent quality increasingly depends on the harness around the model: context, tools, execution, memory, evaluations, and permissions.",
+      "Long-horizon and behavioral evaluations are becoming essential because final-output benchmarks do not explain how an agent behaved.",
+      "The best early agent workflows are bounded, observable, reversible, and easy to verify.",
+      "As access to strong models becomes more common, proprietary workflows, tools, evaluations, and domain context may become the more durable product advantage."
+    ]
+  },
+  {
+    "slug": "seo-migration-html-to-nextjs-checklist",
+    "kicker": "Engineering Notes",
+    "title": "The SEO migration checklist for moving from HTML to Next.js",
+    "subtitle": "A practical way to preserve old URLs, consolidate canonicals, and give search engines one clean version of your site.",
+    "excerpt": "Moving from static HTML to Next.js is a routing change, not just a frontend rewrite. Here is the checklist we use to protect search visibility during the move.",
+    "category": "SEO & Web",
+    "tags": ["nextjs", "seo", "web-development", "technical-seo"],
+    "publishedAt": "2026-09-21",
+    "updatedAt": "2026-09-21",
+    "readingTime": "7 min read",
+    "image": "/images/blog/seo-migration-html-to-nextjs-checklist.png?v=2",
+    "author": {
+      "name": "Ganesh Sharma",
+      "role": "Founder, Auto Craft",
+      "image": "/images/ganesh-suit-close-up.PNG"
+    },
+    "sections": [
+      {
+        "heading": "The risky part is not the JSX",
+        "paragraphs": [
+          "A migration can look perfect in the browser and still lose organic traffic. Search engines remember the old URLs, old canonicals, old internal links, and old sitemap entries long after a new app is deployed.",
+          "The safest migration treats every URL as a contract. If a page still has a useful equivalent, redirect it permanently. If it has no equivalent, return a deliberate 404 instead of sending every visitor to the homepage."
+        ],
+        "bullets": [
+          "Inventory old URLs before changing the route tree.",
+          "Map every valuable URL to its closest real replacement.",
+          "Keep redirects, canonicals, internal links, and the sitemap aligned."
+        ]
+      },
+      {
+        "heading": "Make one URL the source of truth",
+        "paragraphs": [
+          "A common migration mistake is allowing both /home and / to render the same content. That splits signals and makes Search Console reports harder to interpret.",
+          "Choose one canonical route, redirect the duplicate, and update every navigation link to point directly to the canonical URL. Do the same for legacy .html paths."
+        ],
+        "bullets": [
+          "Return a permanent redirect for moved pages.",
+          "Use absolute canonical URLs generated from one metadata base URL.",
+          "Never include redirected URLs in the XML sitemap."
+        ]
+      },
+      {
+        "heading": "Metadata is part of the page architecture",
+        "paragraphs": [
+          "Next.js makes page metadata easy to generate, but the content still needs editorial decisions. Each important route should have a unique title, description, H1, Open Graph title, and canonical URL.",
+          "For content pages, add publication and modification dates, a real author, a representative image, and Article structured data. These fields help crawlers understand what changed and who stands behind the work."
+        ],
+        "bullets": [
+          "Write titles for people first, with the main topic near the front.",
+          "Keep the description specific to the page instead of repeating a site-wide slogan.",
+          "Use Article or BlogPosting schema only when the visible page supports it."
+        ]
+      },
+      {
+        "heading": "The post-launch crawl is the real test",
+        "paragraphs": [
+          "A deployment is not the end of a migration. Inspect the homepage, key service pages, old URLs, robots.txt, and sitemap.xml after release. Then watch the index coverage report for several crawl cycles.",
+          "The useful signal is not whether Search Console changes immediately. It is whether old URL impressions decline while the canonical replacements accumulate impressions and clicks."
+        ],
+        "bullets": [
+          "Test status codes from a clean browser or HTTP client.",
+          "Submit the sitemap and validate fixes in Search Console.",
+          "Compare page-level clicks, impressions, CTR, and position after 28 days."
+        ]
+      }
+    ],
+    "takeaways": [
+      "Redirect old URLs to their closest real equivalents.",
+      "Make canonicals, internal links, and sitemaps agree.",
+      "Measure the migration after Google has had time to recrawl."
+    ]
+  },
+  {
+    "slug": "ai-automation-workflows-indian-businesses",
+    "kicker": "Automation Field Notes",
+    "title": "What AI automation should actually automate in 2026",
+    "subtitle": "The best workflow is not the one with the most AI. It is the one that removes repeated decisions without hiding the important ones.",
+    "excerpt": "AI automation works best when it handles predictable, reviewable work. This is a practical framework for finding those workflows inside an Indian business.",
+    "category": "AI Automation",
+    "tags": ["ai", "automation", "llm", "productivity"],
+    "publishedAt": "2026-09-18",
+    "updatedAt": "2026-09-18",
+    "readingTime": "6 min read",
+    "image": "/images/blog/ai-automation-workflows-indian-businesses.png?v=2",
+    "author": {
+      "name": "Ganesh Sharma",
+      "role": "Founder, Auto Craft",
+      "image": "/images/ganesh-suit-close-up.PNG"
+    },
+    "sections": [
+      {
+        "heading": "Start with friction, not a model",
+        "paragraphs": [
+          "The first question should not be which model to use. It should be where the team repeats the same work every day: copying information between tools, classifying requests, preparing routine drafts, or checking a predictable set of conditions.",
+          "A good candidate has a clear input, a useful output, and a human who can review the result. If nobody can explain what a correct result looks like, automation will only make the uncertainty faster."
+        ],
+        "bullets": [
+          "High volume: the task happens often enough to matter.",
+          "Low ambiguity: the rules can be explained in examples.",
+          "Reviewable risk: a person can approve or correct the output."
+        ]
+      },
+      {
+        "heading": "The workflow should have a boundary",
+        "paragraphs": [
+          "Reliable automation is a bounded system. It knows what starts the workflow, which tools it can access, which decisions need approval, and what happens when information is missing.",
+          "For example, an incoming enquiry can be classified, enriched with approved business data, drafted into a response, and placed in a review queue. Sending an irreversible message or changing a financial record should remain behind an explicit approval step."
+        ],
+        "bullets": [
+          "Define the trigger and the finish line.",
+          "Keep permissions narrow and auditable.",
+          "Log inputs, outputs, approvals, and failures."
+        ]
+      },
+      {
+        "heading": "Measure business output, not AI activity",
+        "paragraphs": [
+          "Token counts and model calls are implementation details. The business cares about response time, hours returned to the team, fewer errors, and more completed work.",
+          "Set a baseline before automating. Then compare the workflow against the old process using a small pilot. A smaller reliable automation is more valuable than a broad demo nobody trusts."
+        ],
+        "bullets": [
+          "Time saved per completed workflow.",
+          "Human correction rate and failure rate.",
+          "Revenue, response time, or service quality affected."
+        ]
+      },
+      {
+        "heading": "The human layer is a feature",
+        "paragraphs": [
+          "The most useful AI systems do not pretend to be autonomous when the business needs accountability. They make the next decision easier to review and give the team a clear way to override the system.",
+          "That is especially important when workflows touch customer data, hiring, health, finance, or regulated operations. Automation should improve judgement, not quietly replace it."
+        ],
+        "bullets": [
+          "Show why a recommendation was made when possible.",
+          "Make correction easy and feed learnings back into the workflow.",
+          "Review permissions and prompts as the process changes."
+        ]
+      }
+    ],
+    "takeaways": [
+      "Automate repeatable work with reviewable outputs.",
+      "Design boundaries, permissions, and failure paths before prompts.",
+      "Judge automation by business outcomes, not model usage."
+    ]
+  },
+  {
+    "slug": "saas-mvp-architecture-real-users",
+    "kicker": "Product Engineering",
+    "title": "A SaaS MVP architecture that survives its first real users",
+    "subtitle": "The goal of an MVP is not to predict the future. It is to create a small, observable system that can learn from real usage.",
+    "excerpt": "A first release needs enough structure to be safe and enough simplicity to change. These are the architecture decisions worth making before the product has traction.",
+    "category": "SaaS Development",
+    "tags": ["saas", "mvp", "product-engineering", "nextjs"],
+    "publishedAt": "2026-09-15",
+    "updatedAt": "2026-09-15",
+    "readingTime": "8 min read",
+    "image": "/images/blog/saas-mvp-architecture-real-users.png",
+    "author": {
+      "name": "Ganesh Sharma",
+      "role": "Founder, Auto Craft",
+      "image": "/images/ganesh-suit-close-up.PNG"
+    },
+    "sections": [
+      {
+        "heading": "An MVP is a learning system",
+        "paragraphs": [
+          "A useful MVP is not a smaller version of an enterprise roadmap. It is the smallest product that lets a real user complete a valuable job and gives the team enough evidence to decide what comes next.",
+          "That means the architecture should optimize for clarity and feedback. Put the core domain in a shape the team can understand, keep boundaries visible, and avoid abstractions that exist only for a hypothetical scale problem."
+        ],
+        "bullets": [
+          "One primary user and one primary job to be done.",
+          "A small number of complete flows instead of many partial features.",
+          "Instrumentation for activation, failure, and repeat usage."
+        ]
+      },
+      {
+        "heading": "Choose boring foundations",
+        "paragraphs": [
+          "A modern stack does not need to be complicated. A typed application, a managed database, a clear authentication boundary, and a repeatable deployment process are usually more valuable than a collection of fashionable services.",
+          "Choose tools the team can debug at 2 a.m. The architecture should make local development, previews, rollbacks, and data backups routine rather than heroic."
+        ],
+        "bullets": [
+          "Keep the first deployment path repeatable.",
+          "Make data ownership and backup responsibility explicit.",
+          "Use a modular monolith until a real boundary needs separation."
+        ]
+      },
+      {
+        "heading": "Design for change without overbuilding",
+        "paragraphs": [
+          "The first users will teach you that some assumptions are wrong. Keep product rules in named modules, keep external integrations behind small adapters, and store important events so the team can understand what happened.",
+          "This is different from building every possible extension point. Build the seams you can already see; leave the rest simple until evidence creates a reason to change it."
+        ],
+        "bullets": [
+          "Name the domain concepts before naming the folders.",
+          "Separate business rules from UI components.",
+          "Make important state transitions observable."
+        ]
+      },
+      {
+        "heading": "Launch with a feedback loop",
+        "paragraphs": [
+          "A launch is successful when the team can observe usage, talk to users, fix the right problems, and release safely. That requires a small operational checklist: error tracking, analytics, support ownership, backups, and a way to deploy a fix without drama.",
+          "The first architecture decision is therefore cultural as much as technical. Make learning part of the product loop from day one."
+        ],
+        "bullets": [
+          "Instrument the moments that define activation.",
+          "Review support conversations alongside analytics.",
+          "Ship small improvements and document what was learned."
+        ]
+      }
+    ],
+    "takeaways": [
+      "Optimize the MVP for learning, not imagined scale.",
+      "Use simple foundations the team can operate confidently.",
+      "Build an observable feedback loop into the first release."
+    ]
+  }
+]

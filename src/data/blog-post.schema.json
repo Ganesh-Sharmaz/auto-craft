@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autocraft-phi.vercel.app/schemas/blog-post.json",
+  "title": "Auto Craft blog post",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug",
+    "kicker",
+    "title",
+    "subtitle",
+    "excerpt",
+    "category",
+    "tags",
+    "publishedAt",
+    "updatedAt",
+    "readingTime",
+    "author",
+    "takeaways"
+  ],
+  "anyOf": [{ "required": ["content"] }, { "required": ["sections"] }],
+  "properties": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "kicker": { "type": "string" },
+    "title": { "type": "string", "minLength": 10 },
+    "subtitle": { "type": "string", "minLength": 20 },
+    "excerpt": { "type": "string", "minLength": 40 },
+    "category": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "publishedAt": { "type": "string", "format": "date" },
+    "updatedAt": { "type": "string", "format": "date" },
+    "readingTime": { "type": "string" },
+    "image": { "type": ["string", "null"] },
+    "author": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "role", "image"],
+      "properties": {
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "image": { "type": "string" }
+      }
+    },
+    "content": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "text"],
+            "properties": {
+              "type": { "const": "heading" },
+              "level": { "enum": [2, 3] },
+              "text": { "type": "string", "minLength": 3 }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "text"],
+            "properties": {
+              "type": { "const": "paragraph" },
+              "text": { "type": "string", "minLength": 40 }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "items"],
+            "properties": {
+              "type": { "const": "list" },
+              "style": { "enum": ["bullet", "number"] },
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "items": { "type": "string" }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "image"],
+            "properties": {
+              "type": { "const": "image" },
+              "image": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["src", "alt"],
+                "properties": {
+                  "src": { "type": "string" },
+                  "alt": { "type": "string", "minLength": 3 },
+                  "caption": { "type": "string" }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "text"],
+            "properties": {
+              "type": { "const": "quote" },
+              "text": { "type": "string" },
+              "attribution": { "type": "string" }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "text"],
+            "properties": {
+              "type": { "const": "callout" },
+              "label": { "type": "string" },
+              "text": { "type": "string" },
+              "items": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type"],
+            "properties": { "type": { "const": "divider" } }
+          }
+        ]
+      }
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["heading", "paragraphs"],
+        "properties": {
+          "heading": { "type": "string", "minLength": 3 },
+          "paragraphs": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 40 }
+          },
+          "bullets": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "takeaways": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string" }
+    }
+  }
+}

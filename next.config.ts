@@ -2,6 +2,9 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   allowedDevOrigins: ['192.168.1.37', '192.168.1.36'],
+  images: {
+    localPatterns: [{ pathname: '/images/**' }],
+  },
   async redirects() {
     return [
       { source: '/home', destination: '/', permanent: true },
