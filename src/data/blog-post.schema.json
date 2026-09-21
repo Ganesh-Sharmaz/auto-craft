@@ -26,6 +26,7 @@
     "subtitle": { "type": "string", "minLength": 20 },
     "excerpt": { "type": "string", "minLength": 40 },
     "category": { "type": "string" },
+    "featured": { "type": "boolean", "default": false },
     "tags": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
     "publishedAt": { "type": "string", "format": "date" },
     "updatedAt": { "type": "string", "format": "date" },

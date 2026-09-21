@@ -32,6 +32,7 @@ export type BlogPost = {
   subtitle: string;
   excerpt: string;
   category: string;
+  featured?: boolean;
   tags: string[];
   publishedAt: string;
   updatedAt: string;

@@ -11,9 +11,19 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-export const firebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
+const isConfigured = Boolean(
+  firebaseConfig.apiKey &&
+    firebaseConfig.projectId &&
+    firebaseConfig.appId,
+);
+
+export const firebaseApp = isConfigured
+  ? getApps().length
+    ? getApp()
+    : initializeApp(firebaseConfig)
+  : null;
 
 export async function getFirebaseAnalytics() {
-  if (typeof window === 'undefined' || !(await isSupported())) return null;
+  if (!firebaseApp || typeof window === 'undefined' || !(await isSupported())) return null;
   return getAnalytics(firebaseApp);
 }

@@ -50,7 +50,7 @@ export default function BlogIndex({ posts }: { posts: BlogPost[] }) {
                 alt=""
                 fill
                 sizes="(max-width: 768px) 100vw, 55vw"
-                className="object-cover grayscale transition duration-500 group-hover:scale-105"
+                className="object-cover transition duration-500 group-hover:scale-105"
               />
             ) : (
               <div className="flex h-full min-h-[300px] items-center justify-center p-8 text-center font-[var(--font-playfair)] text-[clamp(34px,5vw,72px)] font-black leading-none text-[#f5f5f0] md:min-h-[480px]">

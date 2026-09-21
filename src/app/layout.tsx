@@ -5,6 +5,7 @@ import Cursor from '@/components/cursor/cursor';
 import { Analytics } from '@vercel/analytics/next';
 import { ContactModalProvider } from '@/components/common/contact-modal';
 import ContactModalTrigger from '@/components/common/contact-modal-trigger';
+import PageViewTracker from '@/components/analytics/page-view-tracker';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -214,6 +215,7 @@ export default function RootLayout({
       </head>
       <body className={`${playfair.variable} ${geistMono.variable} font-geist`}>
         <Analytics />
+        <PageViewTracker />
         <Cursor />
         {/* ContactModalProvider wraps everything so any child can call useContactModal() */}
         <ContactModalProvider>

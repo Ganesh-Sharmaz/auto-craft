@@ -41,9 +41,11 @@ After adding the server credentials to `.env.local`, run:
 npm run seed:firebase
 ```
 
-This uploads the existing `public/images` tree and seeds `blogPosts`,
-`statePages`, and `locationPages` from the JSON files in `src/data`.
+This seeds `blogPosts`, `statePages`, and `locationPages` from the JSON files
+in `src/data`. Images are not migrated because Firebase Storage is not enabled;
+existing `/images/...` paths remain unchanged.
 
-New posts are sorted by `publishedAt` descending when published, which makes
-the newest post the featured post on the homepage and blog index after the
-Vercel deployment completes.
+Set `featured: true` on the one post that should lead the homepage and blog
+index. Featured posts are prioritized first, followed by `publishedAt`,
+`updatedAt`, and slug as deterministic tie-breakers. New text-editor posts
+default to `featured: false`.

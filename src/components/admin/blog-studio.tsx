@@ -1,6 +1,8 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
+import AnalyticsDashboard from '@/components/admin/analytics-dashboard';
 
 const aiSchema = `{
   "slug": "kebab-case-url",
@@ -9,6 +11,7 @@ const aiSchema = `{
   "subtitle": "One-sentence promise for the reader.",
   "excerpt": "A 40–80 word summary for cards and search previews.",
   "category": "AI & Engineering",
+  "featured": false,
   "tags": ["tag-one", "tag-two"],
   "publishedAt": "YYYY-MM-DD",
   "updatedAt": "YYYY-MM-DD",
@@ -34,6 +37,7 @@ const example = `{
   "subtitle": "Reliable agents need clear decisions, controlled tools, and human review—not just better prompts.",
   "excerpt": "AI agents become safer and easier to operate when their decisions are structured, observable, and connected to explicit workflow boundaries.",
   "category": "AI & Engineering",
+  "featured": false,
   "tags": ["ai-agents", "structured-ai", "automation", "llm"],
   "publishedAt": "2026-09-21",
   "updatedAt": "2026-09-21",
@@ -82,6 +86,7 @@ function textToPost(state: StudioState) {
     subtitle: state.subtitle,
     excerpt: state.excerpt,
     category: state.category,
+    featured: false,
     tags: state.tags
       .split(',')
       .map((tag) => tag.trim())
@@ -108,8 +113,8 @@ function textToPost(state: StudioState) {
 }
 
 export default function BlogStudio() {
-  const [authenticated, setAuthenticated] = useState(false);
-  const [password, setPassword] = useState('');
+  const router = useRouter();
+  const [authenticated, setAuthenticated] = useState<boolean | null>(null);
   const [mode, setMode] = useState<Mode>('json');
   const [json, setJson] = useState(example);
   const [text, setText] = useState(emptyText);
@@ -117,10 +122,13 @@ export default function BlogStudio() {
   const [showGuide, setShowGuide] = useState(false);
 
   useEffect(() => {
-    fetch('/api/admin/blog').then((response) => {
-      if (response.ok) setAuthenticated(true);
-    });
-  }, []);
+    fetch('/api/admin/blog')
+      .then((response) => {
+        if (response.ok) setAuthenticated(true);
+        else router.replace('/studio');
+      })
+      .catch(() => router.replace('/studio'));
+  }, [router]);
 
   const parsed = useMemo(() => {
     try {
@@ -129,19 +137,6 @@ export default function BlogStudio() {
       return null;
     }
   }, [json]);
-
-  async function login(event: React.FormEvent) {
-    event.preventDefault();
-    const response = await fetch('/api/admin/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password }),
-    });
-    if (response.ok) {
-      setAuthenticated(true);
-      setMessage('Signed in.');
-    } else setMessage('Invalid password.');
-  }
 
   async function upload(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
@@ -180,37 +175,7 @@ export default function BlogStudio() {
     );
   }
 
-  if (!authenticated)
-    return (
-      <main className="min-h-screen bg-[#f5f5f0] px-6 py-32 text-[#0a0a0a] md:px-[60px]">
-        <div className="mx-auto max-w-md">
-          <p className="mb-6 font-[var(--font-geist-mono)] text-xs uppercase tracking-[0.2em] text-[#777]">
-            Private / Blog Studio
-          </p>
-          <h1 className="font-[var(--font-playfair)] text-6xl font-black">
-            Sign in.
-          </h1>
-          <form onSubmit={login} className="mt-10 space-y-4">
-            <input
-              type="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              placeholder="Studio password"
-              className="w-full border border-[#aaa] bg-transparent p-4 font-[var(--font-geist-mono)]"
-            />
-            <button className="w-full bg-[#0a0a0a] p-4 font-[var(--font-geist-mono)] text-xs uppercase tracking-[0.18em] text-white">
-              Enter studio
-            </button>
-            <p
-              aria-live="polite"
-              className="font-[var(--font-geist-mono)] text-xs text-[#777]"
-            >
-              {message}
-            </p>
-          </form>
-        </div>
-      </main>
-    );
+  if (authenticated !== true) return null;
 
   return (
     <main className="min-h-screen bg-[#f5f5f0] px-6 py-20 text-[#0a0a0a] md:px-[60px]">
@@ -343,6 +308,7 @@ export default function BlogStudio() {
             )}
           </aside>
         </div>
+        <AnalyticsDashboard />
       </div>
     </main>
   );

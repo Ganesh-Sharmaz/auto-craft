@@ -28,12 +28,19 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   const posts = (
-    (await readPosts()) as Array<{ slug: string; publishedAt?: string }>
+    (await readPosts()) as Array<{
+      slug: string;
+      publishedAt?: string;
+      featured?: boolean;
+    }>
   ).filter((item) => item.slug !== post.slug);
   posts.push(post);
-  posts.sort((a, b) =>
-    String(b.publishedAt || '').localeCompare(String(a.publishedAt || '')),
-  );
+  posts.sort((a, b) => {
+    if (Boolean(b.featured) !== Boolean(a.featured)) {
+      return Boolean(b.featured) ? -1 : 1;
+    }
+    return String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''));
+  });
   const storage = await savePosts(posts);
   return NextResponse.json({ ok: true, storage, posts });
 }
