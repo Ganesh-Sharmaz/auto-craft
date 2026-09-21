@@ -66,7 +66,7 @@ function renderBlock(block: BlogBlock, index: number) {
             alt={block.image.alt}
             width={1200}
             height={675}
-            className="h-auto w-full grayscale"
+            className="h-auto w-full"
           />
           {block.image.caption && (
             <figcaption className="mt-3 font-[var(--font-geist-mono)] text-[0.55rem] uppercase tracking-[0.1em] text-[#777]">
@@ -152,7 +152,7 @@ export default function BlogArticle({ post }: { post: NormalizedBlogPost }) {
                 alt={post.author.name}
                 width={36}
                 height={36}
-                className="h-9 w-9 rounded-full object-cover grayscale"
+                className="h-9 w-9 rounded-full object-cover"
               />
               <span>By {post.author.name}</span>
               <span>·</span>

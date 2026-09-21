@@ -1,25 +1,18 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import locations from '@/data/location-pages.json';
 import LocationPage from '@/components/locations/location-page';
 import PageNavigation from '@/components/common/page-navigation';
+import { getLocations } from '@/lib/content-data';
 
-type Location = (typeof locations)[number];
 type Params = { state: string; city: string };
 
 const baseUrl = 'https://autocraft-phi.vercel.app';
 
-function getLocation(state: string, city: string): Location | undefined {
-  return locations.find(
-    (location) =>
-      location.stateSlug === state && location.citySlug === city,
-  );
-}
+export const dynamicParams = true;
+export const dynamic = 'force-dynamic';
 
-export const dynamicParams = false;
-
-export function generateStaticParams(): Params[] {
-  return locations.map(({ stateSlug, citySlug }) => ({
+export async function generateStaticParams(): Promise<Params[]> {
+  return (await getLocations()).map(({ stateSlug, citySlug }) => ({
     state: stateSlug,
     city: citySlug,
   }));
@@ -31,7 +24,7 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { state, city } = await params;
-  const location = getLocation(state, city);
+  const location = (await getLocations()).find((item) => item.stateSlug === state && item.citySlug === city);
 
   if (!location) return {};
 
@@ -73,7 +66,8 @@ export default async function LocationRoute({
   params: Promise<Params>;
 }) {
   const { state, city } = await params;
-  const location = getLocation(state, city);
+  const locations = await getLocations();
+  const location = locations.find((item) => item.stateSlug === state && item.citySlug === city);
 
   if (!location) notFound();
 

@@ -4,6 +4,14 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ['192.168.1.37', '192.168.1.36'],
   images: {
     localPatterns: [{ pathname: '/images/**' }],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'storage.googleapis.com', pathname: '/**' },
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        pathname: '/**',
+      },
+    ],
   },
   async redirects() {
     return [

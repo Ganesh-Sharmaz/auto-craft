@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
-import posts from '@/data/blog-posts.json';
 import BlogIndex from '@/components/blog/blog-index';
 import PageNavigation from '@/components/common/page-navigation';
-import { normalizeBlogPosts, type BlogPost } from '@/lib/blog-schema';
+import { getBlogPosts } from '@/lib/content-data';
 
-const blogPosts = normalizeBlogPosts(posts as BlogPost[]);
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Field Notes on SaaS, AI & Web Development | Auto Craft',
@@ -19,7 +18,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const blogPosts = await getBlogPosts();
   return (
     <>
       <PageNavigation

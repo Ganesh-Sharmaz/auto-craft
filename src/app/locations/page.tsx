@@ -2,8 +2,10 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Footer from '@/components/common/footer';
 import Nav from '@/components/common/navbar';
-import locations from '@/data/location-pages.json';
 import PageNavigation from '@/components/common/page-navigation';
+import { getLocations } from '@/lib/content-data';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'IT Services Across India | Auto Craft Locations',
@@ -22,15 +24,16 @@ export const metadata: Metadata = {
   publisher: 'Auto Craft',
 };
 
-const stateGroups = locations.reduce<Record<string, typeof locations>>(
-  (groups, location) => {
-    groups[location.state] ??= [];
-    groups[location.state].push(location);
-    return groups;
-  }, {},
-);
-
-export default function LocationsPage() {
+export default async function LocationsPage() {
+  const locations = await getLocations();
+  const stateGroups = locations.reduce<Record<string, typeof locations>>(
+    (groups, location) => {
+      groups[location.state] ??= [];
+      groups[location.state].push(location);
+      return groups;
+    },
+    {},
+  );
   return (
     <div className="w-full min-h-screen bg-[#f5f5f0] text-[#0a0a0a]">
       <Nav />

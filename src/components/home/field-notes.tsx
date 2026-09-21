@@ -1,11 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import posts from '@/data/blog-posts.json';
-import { normalizeBlogPosts, type BlogPost } from '@/lib/blog-schema';
+import { getBlogPosts } from '@/lib/content-data';
 
-const fieldNotes = normalizeBlogPosts(posts as BlogPost[]);
-
-export default function FieldNotes() {
+export default async function FieldNotes() {
+  const fieldNotes = await getBlogPosts();
   const [featured, ...notes] = fieldNotes;
 
   return (

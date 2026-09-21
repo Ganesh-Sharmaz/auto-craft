@@ -1,22 +1,17 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import locations from '@/data/location-pages.json';
-import states from '@/data/state-pages.json';
 import StatePage from '@/components/locations/state-page';
 import PageNavigation from '@/components/common/page-navigation';
+import { getLocations, getStates } from '@/lib/content-data';
 
 type Params = { state: string };
-type State = (typeof states)[number];
 const baseUrl = 'https://autocraft-phi.vercel.app';
 
-function getState(stateSlug: string): State | undefined {
-  return states.find((state) => state.stateSlug === stateSlug);
-}
+export const dynamicParams = true;
+export const dynamic = 'force-dynamic';
 
-export const dynamicParams = false;
-
-export function generateStaticParams(): Params[] {
-  return states.map(({ stateSlug }) => ({ state: stateSlug }));
+export async function generateStaticParams(): Promise<Params[]> {
+  return (await getStates()).map(({ stateSlug }) => ({ state: stateSlug }));
 }
 
 export async function generateMetadata({
@@ -25,7 +20,7 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { state: stateSlug } = await params;
-  const state = getState(stateSlug);
+  const state = (await getStates()).find((item) => item.stateSlug === stateSlug);
   if (!state) return {};
 
   const title = `IT Services & AI Automation in ${state.state} | Auto Craft`;
@@ -57,7 +52,8 @@ export default async function StateRoute({
   params: Promise<Params>;
 }) {
   const { state: stateSlug } = await params;
-  const state = getState(stateSlug);
+  const [states, locations] = await Promise.all([getStates(), getLocations()]);
+  const state = states.find((item) => item.stateSlug === stateSlug);
   if (!state) notFound();
 
   const cities = locations.filter(

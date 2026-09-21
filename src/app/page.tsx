@@ -11,6 +11,8 @@ import Services from '@/components/home/services';
 import Taglines from '@/components/home/taglines';
 import Team from '@/components/home/teams';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Auto Craft | SaaS, AI Automation & Web Development India',
   description:

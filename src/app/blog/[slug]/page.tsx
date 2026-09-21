@@ -1,21 +1,15 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import posts from '@/data/blog-posts.json';
 import BlogArticle from '@/components/blog/blog-article';
-import { normalizeBlogPosts, type BlogPost } from '@/lib/blog-schema';
+import { getBlogPosts } from '@/lib/content-data';
 
 type Params = { slug: string };
 const baseUrl = 'https://autocraft-phi.vercel.app';
-const blogPosts = normalizeBlogPosts(posts as BlogPost[]);
+export const dynamicParams = true;
+export const dynamic = 'force-dynamic';
 
-function getPost(slug: string) {
-  return blogPosts.find((post) => post.slug === slug);
-}
-
-export const dynamicParams = false;
-
-export function generateStaticParams(): Params[] {
-  return blogPosts.map(({ slug }) => ({ slug }));
+export async function generateStaticParams(): Promise<Params[]> {
+  return (await getBlogPosts()).map(({ slug }) => ({ slug }));
 }
 
 function formatDate(date: string) {
@@ -28,7 +22,7 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = (await getBlogPosts()).find((item) => item.slug === slug);
   if (!post) return {};
 
   const url = `${baseUrl}/blog/${post.slug}`;
@@ -66,7 +60,7 @@ export default async function BlogPostPage({
   params: Promise<Params>;
 }) {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = (await getBlogPosts()).find((item) => item.slug === slug);
   if (!post) notFound();
 
   const url = `${baseUrl}/blog/${post.slug}`;

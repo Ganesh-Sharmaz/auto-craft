@@ -1,10 +1,13 @@
 import { MetadataRoute } from 'next';
-import locations from '@/data/location-pages.json';
-import states from '@/data/state-pages.json';
-import posts from '@/data/blog-posts.json';
+import { getBlogPosts, getLocations, getStates } from '@/lib/content-data';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://autocraft-phi.vercel.app';
+  const [posts, states, locations] = await Promise.all([
+    getBlogPosts(),
+    getStates(),
+    getLocations(),
+  ]);
 
   return [
     {
