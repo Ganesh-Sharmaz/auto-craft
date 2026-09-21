@@ -4,6 +4,7 @@ import ServiceSection from '@/components/services/service-section';
 import PricingSection from '@/components/services/pricing-section';
 import WhyUs from '@/components/services/why-us';
 import ServiceContactCTA from '@/components/services/service-contact-us';
+import PageNavigation from '@/components/common/page-navigation';
 
 export const metadata = {
   title:
@@ -91,6 +92,9 @@ const jsonLd = {
 export default function ServicesPage() {
   return (
     <main className="bg-[#f5f5f0] text-[#0a0a0a]">
+      <PageNavigation
+        items={[{ label: 'Home', href: '/' }, { label: 'Services' }]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

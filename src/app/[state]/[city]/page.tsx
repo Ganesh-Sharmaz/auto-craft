@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import locations from '@/data/location-pages.json';
 import LocationPage from '@/components/locations/location-page';
+import PageNavigation from '@/components/common/page-navigation';
 
 type Location = (typeof locations)[number];
 type Params = { state: string; city: string };
@@ -136,10 +137,22 @@ export default async function LocationRoute({
           __html: JSON.stringify([serviceSchema, breadcrumbSchema]),
         }}
       />
-      <LocationPage
-        location={location}
-        relatedLocations={relatedLocations}
-      />
+      <>
+        <PageNavigation
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Locations', href: '/locations' },
+            { label: location.state, href: `/${location.stateSlug}` },
+            { label: location.city },
+          ]}
+          backHref={`/${location.stateSlug}`}
+          backLabel={location.state}
+        />
+        <LocationPage
+          location={location}
+          relatedLocations={relatedLocations}
+        />
+      </>
     </>
   );
 }

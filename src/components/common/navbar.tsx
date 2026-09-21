@@ -40,6 +40,7 @@ export default function Nav() {
   const navLinks = [
     { href: '/pricing', label: 'Pricing' },
     { href: '/services', label: 'Services' },
+    { href: '/blog', label: 'Blog' },
     { href: '/#about', label: 'About' },
     { href: '/#team', label: 'Team' },
     { href: '/contact', label: 'Contact' },

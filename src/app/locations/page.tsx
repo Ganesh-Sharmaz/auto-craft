@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Footer from '@/components/common/footer';
 import Nav from '@/components/common/navbar';
 import locations from '@/data/location-pages.json';
+import PageNavigation from '@/components/common/page-navigation';
 
 export const metadata: Metadata = {
   title: 'IT Services Across India | Auto Craft Locations',
@@ -33,6 +34,9 @@ export default function LocationsPage() {
   return (
     <div className="w-full min-h-screen bg-[#f5f5f0] text-[#0a0a0a]">
       <Nav />
+      <PageNavigation
+        items={[{ label: 'Home', href: '/' }, { label: 'Locations' }]}
+      />
       <main>
         <section className="border-b border-[#d0d0c8] bg-[#0a0a0a] px-6 pb-16 pt-[120px] text-[#f5f5f0] md:px-[60px] md:pb-24 md:pt-[160px]">
           <p className="mb-8 font-[var(--font-geist-mono)] text-[0.6rem] uppercase tracking-[0.25em] text-[#777]">

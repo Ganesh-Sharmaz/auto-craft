@@ -3,6 +3,7 @@ import ContactHero from '@/components/contact/contact-hero';
 import ContactVision from '@/components/contact/contact-vision';
 import Founders from '@/components/contact/founder';
 import ProcessSection from '@/components/services/process-section';
+import PageNavigation from '@/components/common/page-navigation';
 
 export const metadata = {
   title: 'Contact Auto Craft | SaaS, AI Automation & Web Development India',
@@ -69,6 +70,9 @@ const jsonLd = {
 export default function ContactPage() {
   return (
     <main className="bg-[#f5f5f0] text-[#0a0a0a]">
+      <PageNavigation
+        items={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import locations from '@/data/location-pages.json';
 import states from '@/data/state-pages.json';
 import StatePage from '@/components/locations/state-page';
+import PageNavigation from '@/components/common/page-navigation';
 
 type Params = { state: string };
 type State = (typeof states)[number];
@@ -97,7 +98,18 @@ export default async function StateRoute({
           __html: JSON.stringify([serviceSchema, breadcrumbSchema]),
         }}
       />
-      <StatePage state={state} cities={cities} />
+      <>
+        <PageNavigation
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Locations', href: '/locations' },
+            { label: state.state },
+          ]}
+          backHref="/locations"
+          backLabel="Locations"
+        />
+        <StatePage state={state} cities={cities} />
+      </>
     </>
   );
 }

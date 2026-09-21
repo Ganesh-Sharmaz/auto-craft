@@ -60,6 +60,7 @@ export default function Footer() {
         >
             {[
             { href: '/locations', label: 'Locations' },
+            { href: '/blog', label: 'Blog' },
             { href: '/pricing', label: 'Pricing' },
             { href: '/services', label: 'Services' },
             { href: '/#about', label: 'About' },

@@ -5,6 +5,7 @@ import PricingProcess from '@/components/pricing/pricing-process';
 import PricingFAQ from '@/components/pricing/pricing-faq';
 import ServiceContactCTA from '@/components/services/service-contact-us';
 import ContactForm from '@/components/common/contact-form';
+import PageNavigation from '@/components/common/page-navigation';
 
 export const metadata = {
   title: 'SaaS, AI Automation & Web Development Pricing in India | Auto Craft',
@@ -179,6 +180,9 @@ const faqJsonLd = {
 export default function PricingPage() {
   return (
     <main className="bg-[#f5f5f0] text-[#0a0a0a]">
+      <PageNavigation
+        items={[{ label: 'Home', href: '/' }, { label: 'Pricing' }]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
